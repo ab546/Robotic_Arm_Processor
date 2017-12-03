@@ -1,0 +1,45 @@
+# do final-project.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:45:45 on Dec 03,2017
+# vlog -work work final-project.vo 
+# -- Compiling module armController
+# -- Compiling module hard_block
+# 
+# Top level modules:
+# 	armController
+# End time: 14:45:45 on Dec 03,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:45:45 on Dec 03,2017
+# vlog -work work armTester.vwf.vt 
+# -- Compiling module armController_vlg_vec_tst
+# 
+# Top level modules:
+# 	armController_vlg_vec_tst
+# End time: 14:45:45 on Dec 03,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -novopt -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.armController_vlg_vec_tst 
+# Start time: 14:45:45 on Dec 03,2017
+# Loading work.armController_vlg_vec_tst
+# Loading work.armController
+# Loading work.hard_block
+# Loading cycloneive_ver.cycloneive_io_obuf
+# Loading cycloneive_ver.cycloneive_io_ibuf
+# Loading cycloneive_ver.cycloneive_clkctrl
+# Loading cycloneive_ver.cycloneive_mux41
+# Loading cycloneive_ver.cycloneive_ena_reg
+# Loading cycloneive_ver.cycloneive_lcell_comb
+# Loading altera_ver.dffeas
+# SDF 10.5b Compiler 2016.10 Oct  5 2016
+# 
+# Loading instances from final-project_v.sdo
+# Loading altera_ver.PRIM_GDFF_LOW
+# Loading timing data from final-project_v.sdo
+# ** Note: (vsim-3587) SDF Backannotation Successfully Completed.
+#    Time: 0 ps  Iteration: 0  Instance: /armController_vlg_vec_tst File: armTester.vwf.vt
+# after#26
+# ** Note: $finish    : armTester.vwf.vt(48)
+#    Time: 1 us  Iteration: 0  Instance: /armController_vlg_vec_tst
+# End time: 14:45:46 on Dec 03,2017, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

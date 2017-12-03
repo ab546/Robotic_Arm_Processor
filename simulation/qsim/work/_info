@@ -1,0 +1,119 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/qsim
+varmController
+Z1 !s110 1512330345
+!i10b 1
+!s100 X?P34YdKPV:m<5><MOz<U2
+IobP_MC_mzOU4Yo[Q=e]`g2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1512330344
+Z4 8final-project.vo
+Z5 Ffinal-project.vo
+Z6 L0 31
+Z7 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z8 !s108 1512330345.000000
+Z9 !s107 final-project.vo|
+Z10 !s90 -work|work|final-project.vo|
+!i113 1
+Z11 o-work work
+Z12 tCvgOpt 0
+narm@controller
+varmController_vlg_vec_tst
+R1
+!i10b 1
+!s100 @@5nWABaH[FC6KbViQlS?3
+IcU2Ph1DQg;`_CQ>=2Vb913
+R2
+R0
+w1512330341
+8armTester.vwf.vt
+FarmTester.vwf.vt
+Z13 L0 29
+R7
+r1
+!s85 0
+31
+R8
+!s107 armTester.vwf.vt|
+!s90 -work|work|armTester.vwf.vt|
+!i113 1
+R11
+R12
+narm@controller_vlg_vec_tst
+vhard_block
+R1
+!i10b 1
+!s100 H3zeSCSmk>aI5LNlVb^Qj2
+I<ifMa<X_S?ONd@a:YLYj71
+R2
+R0
+R3
+R4
+R5
+L0 7349
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+vmilCounter
+Z14 !s110 1512158883
+!i10b 1
+!s100 `3KQQ@TBojAURUWFPVkz>2
+I?J0Tl?oMg`LKO;ClJ@bW=1
+R2
+R0
+w1512158882
+R4
+R5
+R6
+R7
+r1
+!s85 0
+31
+Z15 !s108 1512158883.000000
+R9
+R10
+!i113 1
+R11
+R12
+nmil@counter
+vmilCounter_vlg_vec_tst
+R14
+!i10b 1
+!s100 0QRBIgBd7TTeO3ndO_k:N1
+ITIeA>YGoNaCdWDo3M9k3G1
+R2
+R0
+w1512158881
+8milCountTest.vwf.vt
+FmilCountTest.vwf.vt
+R13
+R7
+r1
+!s85 0
+31
+R15
+!s107 milCountTest.vwf.vt|
+!s90 -work|work|milCountTest.vwf.vt|
+!i113 1
+R11
+R12
+nmil@counter_vlg_vec_tst

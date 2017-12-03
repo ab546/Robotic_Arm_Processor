@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sun Dec 03 14:49:20 2017
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Revision Name : final-project
+Top-level Entity Name : armController
+Family : Cyclone IV E
+Total logic elements : 351
+    Total combinational functions : 351
+    Dedicated logic registers : 20
+Total registers : 20
+Total pins : 11
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 3
+Total PLLs : 0

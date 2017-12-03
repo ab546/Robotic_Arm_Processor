@@ -1,0 +1,1194 @@
+TimeQuest Timing Analyzer report for final-project
+Sun Dec 03 14:49:51 2017
+Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow 1200mV 85C Model Fmax Summary
+  6. Timing Closure Recommendations
+  7. Slow 1200mV 85C Model Setup Summary
+  8. Slow 1200mV 85C Model Hold Summary
+  9. Slow 1200mV 85C Model Recovery Summary
+ 10. Slow 1200mV 85C Model Removal Summary
+ 11. Slow 1200mV 85C Model Minimum Pulse Width Summary
+ 12. Slow 1200mV 85C Model Setup: 'clk'
+ 13. Slow 1200mV 85C Model Hold: 'clk'
+ 14. Slow 1200mV 85C Model Metastability Summary
+ 15. Slow 1200mV 0C Model Fmax Summary
+ 16. Slow 1200mV 0C Model Setup Summary
+ 17. Slow 1200mV 0C Model Hold Summary
+ 18. Slow 1200mV 0C Model Recovery Summary
+ 19. Slow 1200mV 0C Model Removal Summary
+ 20. Slow 1200mV 0C Model Minimum Pulse Width Summary
+ 21. Slow 1200mV 0C Model Setup: 'clk'
+ 22. Slow 1200mV 0C Model Hold: 'clk'
+ 23. Slow 1200mV 0C Model Metastability Summary
+ 24. Fast 1200mV 0C Model Setup Summary
+ 25. Fast 1200mV 0C Model Hold Summary
+ 26. Fast 1200mV 0C Model Recovery Summary
+ 27. Fast 1200mV 0C Model Removal Summary
+ 28. Fast 1200mV 0C Model Minimum Pulse Width Summary
+ 29. Fast 1200mV 0C Model Setup: 'clk'
+ 30. Fast 1200mV 0C Model Hold: 'clk'
+ 31. Fast 1200mV 0C Model Metastability Summary
+ 32. Multicorner Timing Analysis Summary
+ 33. Board Trace Model Assignments
+ 34. Input Transition Times
+ 35. Signal Integrity Metrics (Slow 1200mv 0c Model)
+ 36. Signal Integrity Metrics (Slow 1200mv 85c Model)
+ 37. Signal Integrity Metrics (Fast 1200mv 0c Model)
+ 38. Setup Transfers
+ 39. Hold Transfers
+ 40. Report TCCS
+ 41. Report RSKM
+ 42. Unconstrained Paths Summary
+ 43. Clock Status Summary
+ 44. Unconstrained Input Ports
+ 45. Unconstrained Output Ports
+ 46. Unconstrained Input Ports
+ 47. Unconstrained Output Ports
+ 48. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                           ;
++-----------------------+-----------------------------------------------------+
+; Quartus Prime Version ; Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
+; Timing Analyzer       ; TimeQuest                                           ;
+; Revision Name         ; final-project                                       ;
+; Device Family         ; Cyclone IV E                                        ;
+; Device Name           ; EP4CE115F29C7                                       ;
+; Timing Models         ; Final                                               ;
+; Delay Model           ; Combined                                            ;
+; Rise/Fall Delays      ; Enabled                                             ;
++-----------------------+-----------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.02        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.7%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                          ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; clk        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+
+
++--------------------------------------------------+
+; Slow 1200mV 85C Model Fmax Summary               ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 216.64 MHz ; 216.64 MHz      ; clk        ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
+----------------------------------
+; Timing Closure Recommendations ;
+----------------------------------
+HTML report is unavailable in plain text report export.
+
+
++-------------------------------------+
+; Slow 1200mV 85C Model Setup Summary ;
++-------+--------+--------------------+
+; Clock ; Slack  ; End Point TNS      ;
++-------+--------+--------------------+
+; clk   ; -2.859 ; -50.565            ;
++-------+--------+--------------------+
+
+
++------------------------------------+
+; Slow 1200mV 85C Model Hold Summary ;
++-------+-------+--------------------+
+; Clock ; Slack ; End Point TNS      ;
++-------+-------+--------------------+
+; clk   ; 0.386 ; 0.000              ;
++-------+-------+--------------------+
+
+
+------------------------------------------
+; Slow 1200mV 85C Model Recovery Summary ;
+------------------------------------------
+No paths to report.
+
+
+-----------------------------------------
+; Slow 1200mV 85C Model Removal Summary ;
+-----------------------------------------
+No paths to report.
+
+
++---------------------------------------------------+
+; Slow 1200mV 85C Model Minimum Pulse Width Summary ;
++-------+--------+----------------------------------+
+; Clock ; Slack  ; End Point TNS                    ;
++-------+--------+----------------------------------+
+; clk   ; -3.000 ; -28.700                          ;
++-------+--------+----------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Setup: 'clk'                                                                                                    ;
++--------+----------------------------+---------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                  ; To Node                   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------+---------------------------+--------------+-------------+--------------+------------+------------+
+; -2.859 ; milCounter:counter|out[4]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.778      ;
+; -2.859 ; milCounter:counter|out[4]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.778      ;
+; -2.859 ; milCounter:counter|out[4]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.778      ;
+; -2.859 ; milCounter:counter|out[4]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.778      ;
+; -2.859 ; milCounter:counter|out[4]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.778      ;
+; -2.859 ; milCounter:counter|out[4]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.778      ;
+; -2.859 ; milCounter:counter|out[4]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.778      ;
+; -2.833 ; milCounter:counter|out[3]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.752      ;
+; -2.833 ; milCounter:counter|out[3]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.752      ;
+; -2.833 ; milCounter:counter|out[3]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.752      ;
+; -2.833 ; milCounter:counter|out[3]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.752      ;
+; -2.833 ; milCounter:counter|out[3]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.752      ;
+; -2.833 ; milCounter:counter|out[3]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.752      ;
+; -2.833 ; milCounter:counter|out[3]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.752      ;
+; -2.826 ; milCounter:counter|out[1]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.508     ; 3.316      ;
+; -2.826 ; milCounter:counter|out[1]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.508     ; 3.316      ;
+; -2.826 ; milCounter:counter|out[1]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.508     ; 3.316      ;
+; -2.826 ; milCounter:counter|out[1]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.508     ; 3.316      ;
+; -2.826 ; milCounter:counter|out[1]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.508     ; 3.316      ;
+; -2.826 ; milCounter:counter|out[1]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.508     ; 3.316      ;
+; -2.826 ; milCounter:counter|out[1]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.508     ; 3.316      ;
+; -2.793 ; milCounter:counter|out[5]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.712      ;
+; -2.793 ; milCounter:counter|out[5]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.712      ;
+; -2.793 ; milCounter:counter|out[5]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.712      ;
+; -2.793 ; milCounter:counter|out[5]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.712      ;
+; -2.793 ; milCounter:counter|out[5]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.712      ;
+; -2.793 ; milCounter:counter|out[5]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.712      ;
+; -2.793 ; milCounter:counter|out[5]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.712      ;
+; -2.683 ; milCounter:counter|out[2]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.602      ;
+; -2.683 ; milCounter:counter|out[2]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.602      ;
+; -2.683 ; milCounter:counter|out[2]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.602      ;
+; -2.683 ; milCounter:counter|out[2]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.602      ;
+; -2.683 ; milCounter:counter|out[2]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.602      ;
+; -2.683 ; milCounter:counter|out[2]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.602      ;
+; -2.683 ; milCounter:counter|out[2]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.602      ;
+; -2.634 ; milCounter:counter|out[6]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.553      ;
+; -2.634 ; milCounter:counter|out[6]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.553      ;
+; -2.634 ; milCounter:counter|out[6]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.553      ;
+; -2.634 ; milCounter:counter|out[6]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.553      ;
+; -2.634 ; milCounter:counter|out[6]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.553      ;
+; -2.634 ; milCounter:counter|out[6]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.553      ;
+; -2.634 ; milCounter:counter|out[6]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.553      ;
+; -2.617 ; milCounter:counter|out[1]  ; milCounter:counter|out[8] ; clk          ; clk         ; 1.000        ; -0.504     ; 3.111      ;
+; -2.559 ; milCounter:counter|out[11] ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.474      ;
+; -2.559 ; milCounter:counter|out[11] ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.474      ;
+; -2.559 ; milCounter:counter|out[11] ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.474      ;
+; -2.559 ; milCounter:counter|out[11] ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.474      ;
+; -2.559 ; milCounter:counter|out[11] ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.474      ;
+; -2.559 ; milCounter:counter|out[11] ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.474      ;
+; -2.559 ; milCounter:counter|out[11] ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.474      ;
+; -2.557 ; milCounter:counter|out[4]  ; milCounter:counter|out[8] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.480      ;
+; -2.531 ; milCounter:counter|out[3]  ; milCounter:counter|out[8] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.454      ;
+; -2.517 ; milCounter:counter|out[7]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.436      ;
+; -2.517 ; milCounter:counter|out[7]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.436      ;
+; -2.517 ; milCounter:counter|out[7]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.436      ;
+; -2.517 ; milCounter:counter|out[7]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.436      ;
+; -2.517 ; milCounter:counter|out[7]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.436      ;
+; -2.517 ; milCounter:counter|out[7]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.436      ;
+; -2.517 ; milCounter:counter|out[7]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.436      ;
+; -2.501 ; milCounter:counter|out[0]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.420      ;
+; -2.501 ; milCounter:counter|out[0]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.420      ;
+; -2.501 ; milCounter:counter|out[0]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.420      ;
+; -2.501 ; milCounter:counter|out[0]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.420      ;
+; -2.501 ; milCounter:counter|out[0]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.420      ;
+; -2.501 ; milCounter:counter|out[0]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.420      ;
+; -2.501 ; milCounter:counter|out[0]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.079     ; 3.420      ;
+; -2.490 ; milCounter:counter|out[5]  ; milCounter:counter|out[8] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.413      ;
+; -2.447 ; milCounter:counter|out[4]  ; milCounter:counter|out[1] ; clk          ; clk         ; 1.000        ; 0.333      ; 3.778      ;
+; -2.433 ; milCounter:counter|out[14] ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.348      ;
+; -2.433 ; milCounter:counter|out[14] ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.348      ;
+; -2.433 ; milCounter:counter|out[14] ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.348      ;
+; -2.433 ; milCounter:counter|out[14] ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.348      ;
+; -2.433 ; milCounter:counter|out[14] ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.348      ;
+; -2.433 ; milCounter:counter|out[14] ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.348      ;
+; -2.433 ; milCounter:counter|out[14] ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.348      ;
+; -2.432 ; milCounter:counter|out[15] ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.347      ;
+; -2.432 ; milCounter:counter|out[15] ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.347      ;
+; -2.432 ; milCounter:counter|out[15] ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.347      ;
+; -2.432 ; milCounter:counter|out[15] ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.347      ;
+; -2.432 ; milCounter:counter|out[15] ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.347      ;
+; -2.432 ; milCounter:counter|out[15] ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.347      ;
+; -2.432 ; milCounter:counter|out[15] ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.347      ;
+; -2.421 ; milCounter:counter|out[3]  ; milCounter:counter|out[1] ; clk          ; clk         ; 1.000        ; 0.333      ; 3.752      ;
+; -2.417 ; milCounter:counter|out[8]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.084     ; 3.331      ;
+; -2.417 ; milCounter:counter|out[8]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.084     ; 3.331      ;
+; -2.417 ; milCounter:counter|out[8]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 3.331      ;
+; -2.417 ; milCounter:counter|out[8]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.084     ; 3.331      ;
+; -2.417 ; milCounter:counter|out[8]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.084     ; 3.331      ;
+; -2.417 ; milCounter:counter|out[8]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.084     ; 3.331      ;
+; -2.417 ; milCounter:counter|out[8]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.084     ; 3.331      ;
+; -2.414 ; milCounter:counter|out[1]  ; milCounter:counter|out[1] ; clk          ; clk         ; 1.000        ; -0.096     ; 3.316      ;
+; -2.413 ; milCounter:counter|out[13] ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.328      ;
+; -2.413 ; milCounter:counter|out[13] ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.328      ;
+; -2.413 ; milCounter:counter|out[13] ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.328      ;
+; -2.413 ; milCounter:counter|out[13] ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.328      ;
+; -2.413 ; milCounter:counter|out[13] ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.328      ;
+; -2.413 ; milCounter:counter|out[13] ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.328      ;
+; -2.413 ; milCounter:counter|out[13] ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.328      ;
+; -2.409 ; milCounter:counter|out[10] ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.324      ;
+; -2.409 ; milCounter:counter|out[10] ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.083     ; 3.324      ;
++--------+----------------------------+---------------------------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Hold: 'clk'                                                                                                     ;
++-------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                  ; To Node                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; 0.386 ; servoClk                   ; servoClk                   ; clk          ; clk         ; 0.000        ; 0.097      ; 0.669      ;
+; 0.451 ; milCounter:counter|out[18] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.079      ; 0.716      ;
+; 0.650 ; milCounter:counter|out[1]  ; milCounter:counter|out[1]  ; clk          ; clk         ; 0.000        ; 0.096      ; 0.932      ;
+; 0.659 ; milCounter:counter|out[11] ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.079      ; 0.924      ;
+; 0.665 ; milCounter:counter|out[9]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.079      ; 0.930      ;
+; 0.666 ; milCounter:counter|out[4]  ; milCounter:counter|out[4]  ; clk          ; clk         ; 0.000        ; 0.079      ; 0.931      ;
+; 0.666 ; milCounter:counter|out[5]  ; milCounter:counter|out[5]  ; clk          ; clk         ; 0.000        ; 0.079      ; 0.931      ;
+; 0.666 ; milCounter:counter|out[12] ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.079      ; 0.931      ;
+; 0.667 ; milCounter:counter|out[13] ; milCounter:counter|out[13] ; clk          ; clk         ; 0.000        ; 0.079      ; 0.932      ;
+; 0.667 ; milCounter:counter|out[14] ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.079      ; 0.932      ;
+; 0.669 ; milCounter:counter|out[10] ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.079      ; 0.934      ;
+; 0.669 ; milCounter:counter|out[17] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.079      ; 0.934      ;
+; 0.672 ; milCounter:counter|out[16] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.079      ; 0.937      ;
+; 0.724 ; milCounter:counter|out[0]  ; milCounter:counter|out[1]  ; clk          ; clk         ; 0.000        ; 0.508      ; 1.418      ;
+; 0.815 ; milCounter:counter|out[3]  ; milCounter:counter|out[3]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.080      ;
+; 0.828 ; milCounter:counter|out[2]  ; milCounter:counter|out[2]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.093      ;
+; 0.830 ; milCounter:counter|out[7]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.095      ;
+; 0.830 ; milCounter:counter|out[15] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.095      ;
+; 0.831 ; milCounter:counter|out[6]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.096      ;
+; 0.845 ; milCounter:counter|out[0]  ; milCounter:counter|out[0]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.110      ;
+; 0.976 ; milCounter:counter|out[11] ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.241      ;
+; 0.982 ; milCounter:counter|out[9]  ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.247      ;
+; 0.983 ; milCounter:counter|out[5]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.248      ;
+; 0.984 ; milCounter:counter|out[13] ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.249      ;
+; 0.986 ; milCounter:counter|out[17] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.251      ;
+; 0.993 ; milCounter:counter|out[4]  ; milCounter:counter|out[5]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.258      ;
+; 0.993 ; milCounter:counter|out[12] ; milCounter:counter|out[13] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.258      ;
+; 0.994 ; milCounter:counter|out[14] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.259      ;
+; 0.996 ; milCounter:counter|out[10] ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.261      ;
+; 0.998 ; milCounter:counter|out[4]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.263      ;
+; 0.998 ; milCounter:counter|out[12] ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.263      ;
+; 0.999 ; milCounter:counter|out[14] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.264      ;
+; 0.999 ; milCounter:counter|out[16] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.264      ;
+; 1.001 ; milCounter:counter|out[10] ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.266      ;
+; 1.004 ; milCounter:counter|out[16] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.269      ;
+; 1.097 ; milCounter:counter|out[11] ; milCounter:counter|out[13] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.362      ;
+; 1.102 ; milCounter:counter|out[11] ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.367      ;
+; 1.103 ; milCounter:counter|out[9]  ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.368      ;
+; 1.104 ; milCounter:counter|out[5]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.369      ;
+; 1.105 ; milCounter:counter|out[13] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.370      ;
+; 1.108 ; milCounter:counter|out[9]  ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.373      ;
+; 1.110 ; milCounter:counter|out[13] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.375      ;
+; 1.119 ; milCounter:counter|out[4]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.384      ;
+; 1.119 ; milCounter:counter|out[12] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.384      ;
+; 1.120 ; milCounter:counter|out[14] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.385      ;
+; 1.122 ; milCounter:counter|out[10] ; milCounter:counter|out[13] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.387      ;
+; 1.124 ; milCounter:counter|out[12] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.389      ;
+; 1.125 ; milCounter:counter|out[14] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.390      ;
+; 1.127 ; milCounter:counter|out[10] ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.392      ;
+; 1.133 ; milCounter:counter|out[3]  ; milCounter:counter|out[4]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.398      ;
+; 1.147 ; milCounter:counter|out[15] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.412      ;
+; 1.155 ; milCounter:counter|out[2]  ; milCounter:counter|out[3]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.420      ;
+; 1.158 ; milCounter:counter|out[0]  ; milCounter:counter|out[2]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.423      ;
+; 1.158 ; milCounter:counter|out[6]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.423      ;
+; 1.160 ; milCounter:counter|out[2]  ; milCounter:counter|out[4]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.425      ;
+; 1.190 ; milCounter:counter|out[18] ; servoClk                   ; clk          ; clk         ; -0.500       ; 0.388      ; 1.284      ;
+; 1.223 ; milCounter:counter|out[11] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.488      ;
+; 1.226 ; milCounter:counter|out[5]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.083      ; 1.495      ;
+; 1.228 ; milCounter:counter|out[11] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.493      ;
+; 1.229 ; milCounter:counter|out[9]  ; milCounter:counter|out[13] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.494      ;
+; 1.231 ; milCounter:counter|out[5]  ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.083      ; 1.500      ;
+; 1.231 ; milCounter:counter|out[13] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.496      ;
+; 1.234 ; milCounter:counter|out[9]  ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.499      ;
+; 1.236 ; milCounter:counter|out[13] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.501      ;
+; 1.241 ; milCounter:counter|out[4]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.083      ; 1.510      ;
+; 1.245 ; milCounter:counter|out[12] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.510      ;
+; 1.246 ; milCounter:counter|out[4]  ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.083      ; 1.515      ;
+; 1.248 ; milCounter:counter|out[10] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.513      ;
+; 1.250 ; milCounter:counter|out[3]  ; milCounter:counter|out[5]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.515      ;
+; 1.250 ; milCounter:counter|out[12] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.515      ;
+; 1.253 ; milCounter:counter|out[10] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.518      ;
+; 1.255 ; milCounter:counter|out[7]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.083      ; 1.524      ;
+; 1.259 ; milCounter:counter|out[3]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.524      ;
+; 1.268 ; milCounter:counter|out[15] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.533      ;
+; 1.270 ; milCounter:counter|out[7]  ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.083      ; 1.539      ;
+; 1.273 ; milCounter:counter|out[15] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.538      ;
+; 1.279 ; milCounter:counter|out[0]  ; milCounter:counter|out[3]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.544      ;
+; 1.280 ; milCounter:counter|out[6]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.083      ; 1.549      ;
+; 1.281 ; milCounter:counter|out[2]  ; milCounter:counter|out[5]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.546      ;
+; 1.284 ; milCounter:counter|out[0]  ; milCounter:counter|out[4]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.549      ;
+; 1.285 ; milCounter:counter|out[6]  ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.083      ; 1.554      ;
+; 1.286 ; milCounter:counter|out[2]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.551      ;
+; 1.314 ; milCounter:counter|out[16] ; servoClk                   ; clk          ; clk         ; -0.500       ; 0.388      ; 1.408      ;
+; 1.349 ; milCounter:counter|out[11] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.614      ;
+; 1.352 ; milCounter:counter|out[5]  ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.083      ; 1.621      ;
+; 1.354 ; milCounter:counter|out[11] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.619      ;
+; 1.355 ; milCounter:counter|out[9]  ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.620      ;
+; 1.357 ; milCounter:counter|out[5]  ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.083      ; 1.626      ;
+; 1.360 ; milCounter:counter|out[9]  ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.625      ;
+; 1.367 ; milCounter:counter|out[4]  ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.083      ; 1.636      ;
+; 1.372 ; milCounter:counter|out[4]  ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.083      ; 1.641      ;
+; 1.374 ; milCounter:counter|out[10] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.639      ;
+; 1.376 ; milCounter:counter|out[3]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.641      ;
+; 1.379 ; milCounter:counter|out[10] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.079      ; 1.644      ;
+; 1.381 ; milCounter:counter|out[7]  ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.083      ; 1.650      ;
+; 1.396 ; milCounter:counter|out[1]  ; milCounter:counter|out[2]  ; clk          ; clk         ; 0.000        ; -0.333     ; 1.249      ;
+; 1.396 ; milCounter:counter|out[7]  ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.083      ; 1.665      ;
+; 1.402 ; milCounter:counter|out[17] ; servoClk                   ; clk          ; clk         ; -0.500       ; 0.388      ; 1.496      ;
+; 1.405 ; milCounter:counter|out[0]  ; milCounter:counter|out[5]  ; clk          ; clk         ; 0.000        ; 0.079      ; 1.670      ;
+; 1.406 ; milCounter:counter|out[6]  ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.083      ; 1.675      ;
++-------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+
+
+-----------------------------------------------
+; Slow 1200mV 85C Model Metastability Summary ;
+-----------------------------------------------
+No synchronizer chains to report.
+
+
++--------------------------------------------------+
+; Slow 1200mV 0C Model Fmax Summary                ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 238.32 MHz ; 238.32 MHz      ; clk        ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++------------------------------------+
+; Slow 1200mV 0C Model Setup Summary ;
++-------+--------+-------------------+
+; Clock ; Slack  ; End Point TNS     ;
++-------+--------+-------------------+
+; clk   ; -2.560 ; -44.888           ;
++-------+--------+-------------------+
+
+
++-----------------------------------+
+; Slow 1200mV 0C Model Hold Summary ;
++-------+-------+-------------------+
+; Clock ; Slack ; End Point TNS     ;
++-------+-------+-------------------+
+; clk   ; 0.339 ; 0.000             ;
++-------+-------+-------------------+
+
+
+-----------------------------------------
+; Slow 1200mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Slow 1200mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Slow 1200mV 0C Model Minimum Pulse Width Summary ;
++-------+--------+---------------------------------+
+; Clock ; Slack  ; End Point TNS                   ;
++-------+--------+---------------------------------+
+; clk   ; -3.000 ; -28.700                         ;
++-------+--------+---------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Setup: 'clk'                                                                                                     ;
++--------+----------------------------+---------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                  ; To Node                   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------+---------------------------+--------------+-------------+--------------+------------+------------+
+; -2.560 ; milCounter:counter|out[4]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.488      ;
+; -2.560 ; milCounter:counter|out[4]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.488      ;
+; -2.560 ; milCounter:counter|out[4]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.488      ;
+; -2.560 ; milCounter:counter|out[4]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.488      ;
+; -2.560 ; milCounter:counter|out[4]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.488      ;
+; -2.560 ; milCounter:counter|out[4]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.488      ;
+; -2.560 ; milCounter:counter|out[4]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.488      ;
+; -2.527 ; milCounter:counter|out[3]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.455      ;
+; -2.527 ; milCounter:counter|out[3]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.455      ;
+; -2.527 ; milCounter:counter|out[3]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.455      ;
+; -2.527 ; milCounter:counter|out[3]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.455      ;
+; -2.527 ; milCounter:counter|out[3]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.455      ;
+; -2.527 ; milCounter:counter|out[3]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.455      ;
+; -2.527 ; milCounter:counter|out[3]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.455      ;
+; -2.523 ; milCounter:counter|out[1]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.448     ; 3.074      ;
+; -2.523 ; milCounter:counter|out[1]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.448     ; 3.074      ;
+; -2.523 ; milCounter:counter|out[1]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.448     ; 3.074      ;
+; -2.523 ; milCounter:counter|out[1]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.448     ; 3.074      ;
+; -2.523 ; milCounter:counter|out[1]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.448     ; 3.074      ;
+; -2.523 ; milCounter:counter|out[1]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.448     ; 3.074      ;
+; -2.523 ; milCounter:counter|out[1]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.448     ; 3.074      ;
+; -2.477 ; milCounter:counter|out[5]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.405      ;
+; -2.477 ; milCounter:counter|out[5]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.405      ;
+; -2.477 ; milCounter:counter|out[5]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.405      ;
+; -2.477 ; milCounter:counter|out[5]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.405      ;
+; -2.477 ; milCounter:counter|out[5]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.405      ;
+; -2.477 ; milCounter:counter|out[5]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.405      ;
+; -2.477 ; milCounter:counter|out[5]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.405      ;
+; -2.400 ; milCounter:counter|out[2]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.328      ;
+; -2.400 ; milCounter:counter|out[2]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.328      ;
+; -2.400 ; milCounter:counter|out[2]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.328      ;
+; -2.400 ; milCounter:counter|out[2]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.328      ;
+; -2.400 ; milCounter:counter|out[2]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.328      ;
+; -2.400 ; milCounter:counter|out[2]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.328      ;
+; -2.400 ; milCounter:counter|out[2]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.328      ;
+; -2.366 ; milCounter:counter|out[6]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.294      ;
+; -2.366 ; milCounter:counter|out[6]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.294      ;
+; -2.366 ; milCounter:counter|out[6]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.294      ;
+; -2.366 ; milCounter:counter|out[6]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.294      ;
+; -2.366 ; milCounter:counter|out[6]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.294      ;
+; -2.366 ; milCounter:counter|out[6]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.294      ;
+; -2.366 ; milCounter:counter|out[6]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.294      ;
+; -2.273 ; milCounter:counter|out[4]  ; milCounter:counter|out[8] ; clk          ; clk         ; 1.000        ; -0.065     ; 3.207      ;
+; -2.270 ; milCounter:counter|out[1]  ; milCounter:counter|out[8] ; clk          ; clk         ; 1.000        ; -0.442     ; 2.827      ;
+; -2.263 ; milCounter:counter|out[11] ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.187      ;
+; -2.263 ; milCounter:counter|out[11] ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.187      ;
+; -2.263 ; milCounter:counter|out[11] ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.187      ;
+; -2.263 ; milCounter:counter|out[11] ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.187      ;
+; -2.263 ; milCounter:counter|out[11] ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.187      ;
+; -2.263 ; milCounter:counter|out[11] ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.187      ;
+; -2.263 ; milCounter:counter|out[11] ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.187      ;
+; -2.256 ; milCounter:counter|out[7]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.184      ;
+; -2.256 ; milCounter:counter|out[7]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.184      ;
+; -2.256 ; milCounter:counter|out[7]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.184      ;
+; -2.256 ; milCounter:counter|out[7]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.184      ;
+; -2.256 ; milCounter:counter|out[7]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.184      ;
+; -2.256 ; milCounter:counter|out[7]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.184      ;
+; -2.256 ; milCounter:counter|out[7]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.184      ;
+; -2.245 ; milCounter:counter|out[0]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.173      ;
+; -2.245 ; milCounter:counter|out[0]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.173      ;
+; -2.245 ; milCounter:counter|out[0]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.173      ;
+; -2.245 ; milCounter:counter|out[0]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.173      ;
+; -2.245 ; milCounter:counter|out[0]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.173      ;
+; -2.245 ; milCounter:counter|out[0]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.173      ;
+; -2.245 ; milCounter:counter|out[0]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.071     ; 3.173      ;
+; -2.240 ; milCounter:counter|out[3]  ; milCounter:counter|out[8] ; clk          ; clk         ; 1.000        ; -0.065     ; 3.174      ;
+; -2.197 ; milCounter:counter|out[4]  ; milCounter:counter|out[1] ; clk          ; clk         ; 1.000        ; 0.292      ; 3.488      ;
+; -2.190 ; milCounter:counter|out[5]  ; milCounter:counter|out[8] ; clk          ; clk         ; 1.000        ; -0.065     ; 3.124      ;
+; -2.164 ; milCounter:counter|out[3]  ; milCounter:counter|out[1] ; clk          ; clk         ; 1.000        ; 0.292      ; 3.455      ;
+; -2.160 ; milCounter:counter|out[1]  ; milCounter:counter|out[1] ; clk          ; clk         ; 1.000        ; -0.085     ; 3.074      ;
+; -2.155 ; milCounter:counter|out[14] ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.079      ;
+; -2.155 ; milCounter:counter|out[14] ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.079      ;
+; -2.155 ; milCounter:counter|out[14] ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.079      ;
+; -2.155 ; milCounter:counter|out[14] ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.079      ;
+; -2.155 ; milCounter:counter|out[14] ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.079      ;
+; -2.155 ; milCounter:counter|out[14] ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.079      ;
+; -2.155 ; milCounter:counter|out[14] ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.079      ;
+; -2.133 ; milCounter:counter|out[10] ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.057      ;
+; -2.133 ; milCounter:counter|out[10] ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.057      ;
+; -2.133 ; milCounter:counter|out[10] ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.057      ;
+; -2.133 ; milCounter:counter|out[10] ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.057      ;
+; -2.133 ; milCounter:counter|out[10] ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.057      ;
+; -2.133 ; milCounter:counter|out[10] ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.057      ;
+; -2.133 ; milCounter:counter|out[10] ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.057      ;
+; -2.114 ; milCounter:counter|out[5]  ; milCounter:counter|out[1] ; clk          ; clk         ; 1.000        ; 0.292      ; 3.405      ;
+; -2.113 ; milCounter:counter|out[2]  ; milCounter:counter|out[8] ; clk          ; clk         ; 1.000        ; -0.065     ; 3.047      ;
+; -2.111 ; milCounter:counter|out[8]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.076     ; 3.034      ;
+; -2.111 ; milCounter:counter|out[8]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.076     ; 3.034      ;
+; -2.111 ; milCounter:counter|out[8]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.076     ; 3.034      ;
+; -2.111 ; milCounter:counter|out[8]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.076     ; 3.034      ;
+; -2.111 ; milCounter:counter|out[8]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.076     ; 3.034      ;
+; -2.111 ; milCounter:counter|out[8]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.076     ; 3.034      ;
+; -2.111 ; milCounter:counter|out[8]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.076     ; 3.034      ;
+; -2.103 ; milCounter:counter|out[15] ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.027      ;
+; -2.103 ; milCounter:counter|out[15] ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.027      ;
+; -2.103 ; milCounter:counter|out[15] ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.027      ;
+; -2.103 ; milCounter:counter|out[15] ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.027      ;
+; -2.103 ; milCounter:counter|out[15] ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.027      ;
+; -2.103 ; milCounter:counter|out[15] ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.027      ;
+; -2.103 ; milCounter:counter|out[15] ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.075     ; 3.027      ;
++--------+----------------------------+---------------------------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Hold: 'clk'                                                                                                      ;
++-------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                  ; To Node                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; 0.339 ; servoClk                   ; servoClk                   ; clk          ; clk         ; 0.000        ; 0.087      ; 0.597      ;
+; 0.409 ; milCounter:counter|out[18] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.070      ; 0.650      ;
+; 0.596 ; milCounter:counter|out[1]  ; milCounter:counter|out[1]  ; clk          ; clk         ; 0.000        ; 0.085      ; 0.852      ;
+; 0.604 ; milCounter:counter|out[11] ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.070      ; 0.845      ;
+; 0.608 ; milCounter:counter|out[4]  ; milCounter:counter|out[4]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.850      ;
+; 0.608 ; milCounter:counter|out[12] ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.070      ; 0.849      ;
+; 0.609 ; milCounter:counter|out[5]  ; milCounter:counter|out[5]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.851      ;
+; 0.609 ; milCounter:counter|out[9]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.070      ; 0.850      ;
+; 0.610 ; milCounter:counter|out[14] ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.070      ; 0.851      ;
+; 0.611 ; milCounter:counter|out[10] ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.070      ; 0.852      ;
+; 0.611 ; milCounter:counter|out[13] ; milCounter:counter|out[13] ; clk          ; clk         ; 0.000        ; 0.070      ; 0.852      ;
+; 0.613 ; milCounter:counter|out[17] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.070      ; 0.854      ;
+; 0.615 ; milCounter:counter|out[16] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.070      ; 0.856      ;
+; 0.666 ; milCounter:counter|out[0]  ; milCounter:counter|out[1]  ; clk          ; clk         ; 0.000        ; 0.448      ; 1.285      ;
+; 0.756 ; milCounter:counter|out[3]  ; milCounter:counter|out[3]  ; clk          ; clk         ; 0.000        ; 0.071      ; 0.998      ;
+; 0.767 ; milCounter:counter|out[2]  ; milCounter:counter|out[2]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.009      ;
+; 0.769 ; milCounter:counter|out[7]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.011      ;
+; 0.771 ; milCounter:counter|out[6]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.013      ;
+; 0.772 ; milCounter:counter|out[15] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.013      ;
+; 0.783 ; milCounter:counter|out[0]  ; milCounter:counter|out[0]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.025      ;
+; 0.891 ; milCounter:counter|out[11] ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.132      ;
+; 0.896 ; milCounter:counter|out[9]  ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.137      ;
+; 0.896 ; milCounter:counter|out[4]  ; milCounter:counter|out[5]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.138      ;
+; 0.896 ; milCounter:counter|out[12] ; milCounter:counter|out[13] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.137      ;
+; 0.896 ; milCounter:counter|out[5]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.138      ;
+; 0.898 ; milCounter:counter|out[13] ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.139      ;
+; 0.898 ; milCounter:counter|out[14] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.139      ;
+; 0.899 ; milCounter:counter|out[10] ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.140      ;
+; 0.900 ; milCounter:counter|out[17] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.141      ;
+; 0.903 ; milCounter:counter|out[16] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.144      ;
+; 0.907 ; milCounter:counter|out[4]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.149      ;
+; 0.907 ; milCounter:counter|out[12] ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.148      ;
+; 0.909 ; milCounter:counter|out[14] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.150      ;
+; 0.910 ; milCounter:counter|out[10] ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.151      ;
+; 0.914 ; milCounter:counter|out[16] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.155      ;
+; 0.990 ; milCounter:counter|out[11] ; milCounter:counter|out[13] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.231      ;
+; 0.995 ; milCounter:counter|out[5]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.237      ;
+; 0.995 ; milCounter:counter|out[9]  ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.236      ;
+; 0.997 ; milCounter:counter|out[13] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.238      ;
+; 1.001 ; milCounter:counter|out[11] ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.242      ;
+; 1.006 ; milCounter:counter|out[9]  ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.247      ;
+; 1.006 ; milCounter:counter|out[4]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.248      ;
+; 1.006 ; milCounter:counter|out[12] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.247      ;
+; 1.008 ; milCounter:counter|out[14] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.249      ;
+; 1.008 ; milCounter:counter|out[13] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.249      ;
+; 1.009 ; milCounter:counter|out[10] ; milCounter:counter|out[13] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.250      ;
+; 1.017 ; milCounter:counter|out[12] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.258      ;
+; 1.019 ; milCounter:counter|out[14] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.260      ;
+; 1.020 ; milCounter:counter|out[10] ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.261      ;
+; 1.042 ; milCounter:counter|out[3]  ; milCounter:counter|out[4]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.284      ;
+; 1.043 ; milCounter:counter|out[6]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.285      ;
+; 1.055 ; milCounter:counter|out[2]  ; milCounter:counter|out[3]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.297      ;
+; 1.059 ; milCounter:counter|out[15] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.300      ;
+; 1.063 ; milCounter:counter|out[0]  ; milCounter:counter|out[2]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.305      ;
+; 1.066 ; milCounter:counter|out[2]  ; milCounter:counter|out[4]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.308      ;
+; 1.100 ; milCounter:counter|out[11] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.341      ;
+; 1.101 ; milCounter:counter|out[5]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.075      ; 1.347      ;
+; 1.105 ; milCounter:counter|out[9]  ; milCounter:counter|out[13] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.346      ;
+; 1.107 ; milCounter:counter|out[13] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.348      ;
+; 1.111 ; milCounter:counter|out[11] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.352      ;
+; 1.112 ; milCounter:counter|out[5]  ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.075      ; 1.358      ;
+; 1.112 ; milCounter:counter|out[4]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.075      ; 1.358      ;
+; 1.113 ; milCounter:counter|out[3]  ; milCounter:counter|out[5]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.355      ;
+; 1.116 ; milCounter:counter|out[9]  ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.357      ;
+; 1.116 ; milCounter:counter|out[12] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.357      ;
+; 1.117 ; milCounter:counter|out[18] ; servoClk                   ; clk          ; clk         ; -0.500       ; 0.370      ; 1.178      ;
+; 1.117 ; milCounter:counter|out[7]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.075      ; 1.363      ;
+; 1.118 ; milCounter:counter|out[13] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.359      ;
+; 1.119 ; milCounter:counter|out[10] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.360      ;
+; 1.123 ; milCounter:counter|out[4]  ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.075      ; 1.369      ;
+; 1.127 ; milCounter:counter|out[12] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.368      ;
+; 1.130 ; milCounter:counter|out[10] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.371      ;
+; 1.134 ; milCounter:counter|out[15] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.375      ;
+; 1.149 ; milCounter:counter|out[6]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.075      ; 1.395      ;
+; 1.152 ; milCounter:counter|out[3]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.394      ;
+; 1.153 ; milCounter:counter|out[0]  ; milCounter:counter|out[3]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.395      ;
+; 1.161 ; milCounter:counter|out[7]  ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.075      ; 1.407      ;
+; 1.165 ; milCounter:counter|out[2]  ; milCounter:counter|out[5]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.407      ;
+; 1.169 ; milCounter:counter|out[15] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.410      ;
+; 1.173 ; milCounter:counter|out[0]  ; milCounter:counter|out[4]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.415      ;
+; 1.176 ; milCounter:counter|out[6]  ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.075      ; 1.422      ;
+; 1.176 ; milCounter:counter|out[2]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.418      ;
+; 1.210 ; milCounter:counter|out[11] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.451      ;
+; 1.211 ; milCounter:counter|out[5]  ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.075      ; 1.457      ;
+; 1.215 ; milCounter:counter|out[9]  ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.456      ;
+; 1.221 ; milCounter:counter|out[11] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.462      ;
+; 1.222 ; milCounter:counter|out[5]  ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.075      ; 1.468      ;
+; 1.222 ; milCounter:counter|out[4]  ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.075      ; 1.468      ;
+; 1.223 ; milCounter:counter|out[3]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.465      ;
+; 1.226 ; milCounter:counter|out[9]  ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.467      ;
+; 1.227 ; milCounter:counter|out[7]  ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.075      ; 1.473      ;
+; 1.228 ; milCounter:counter|out[16] ; servoClk                   ; clk          ; clk         ; -0.500       ; 0.370      ; 1.289      ;
+; 1.229 ; milCounter:counter|out[10] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.470      ;
+; 1.233 ; milCounter:counter|out[4]  ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.075      ; 1.479      ;
+; 1.240 ; milCounter:counter|out[10] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.070      ; 1.481      ;
+; 1.259 ; milCounter:counter|out[6]  ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.075      ; 1.505      ;
+; 1.260 ; milCounter:counter|out[1]  ; milCounter:counter|out[2]  ; clk          ; clk         ; 0.000        ; -0.292     ; 1.139      ;
+; 1.263 ; milCounter:counter|out[0]  ; milCounter:counter|out[5]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.505      ;
+; 1.271 ; milCounter:counter|out[7]  ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.075      ; 1.517      ;
+; 1.275 ; milCounter:counter|out[2]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.517      ;
++-------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+
+
+----------------------------------------------
+; Slow 1200mV 0C Model Metastability Summary ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++------------------------------------+
+; Fast 1200mV 0C Model Setup Summary ;
++-------+--------+-------------------+
+; Clock ; Slack  ; End Point TNS     ;
++-------+--------+-------------------+
+; clk   ; -0.990 ; -14.668           ;
++-------+--------+-------------------+
+
+
++-----------------------------------+
+; Fast 1200mV 0C Model Hold Summary ;
++-------+-------+-------------------+
+; Clock ; Slack ; End Point TNS     ;
++-------+-------+-------------------+
+; clk   ; 0.175 ; 0.000             ;
++-------+-------+-------------------+
+
+
+-----------------------------------------
+; Fast 1200mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Fast 1200mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Fast 1200mV 0C Model Minimum Pulse Width Summary ;
++-------+--------+---------------------------------+
+; Clock ; Slack  ; End Point TNS                   ;
++-------+--------+---------------------------------+
+; clk   ; -3.000 ; -25.084                         ;
++-------+--------+---------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Setup: 'clk'                                                                                                     ;
++--------+----------------------------+---------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                  ; To Node                   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------+---------------------------+--------------+-------------+--------------+------------+------------+
+; -0.990 ; milCounter:counter|out[5]  ; servoClk                  ; clk          ; clk         ; 0.500        ; -0.254     ; 1.223      ;
+; -0.955 ; milCounter:counter|out[1]  ; servoClk                  ; clk          ; clk         ; 0.500        ; -0.479     ; 0.963      ;
+; -0.955 ; milCounter:counter|out[4]  ; servoClk                  ; clk          ; clk         ; 0.500        ; -0.254     ; 1.188      ;
+; -0.939 ; milCounter:counter|out[3]  ; servoClk                  ; clk          ; clk         ; 0.500        ; -0.254     ; 1.172      ;
+; -0.871 ; milCounter:counter|out[5]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.814      ;
+; -0.871 ; milCounter:counter|out[5]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.814      ;
+; -0.871 ; milCounter:counter|out[5]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.814      ;
+; -0.871 ; milCounter:counter|out[5]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.814      ;
+; -0.871 ; milCounter:counter|out[5]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.814      ;
+; -0.871 ; milCounter:counter|out[5]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.814      ;
+; -0.871 ; milCounter:counter|out[5]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.814      ;
+; -0.870 ; milCounter:counter|out[2]  ; servoClk                  ; clk          ; clk         ; 0.500        ; -0.254     ; 1.103      ;
+; -0.853 ; milCounter:counter|out[6]  ; servoClk                  ; clk          ; clk         ; 0.500        ; -0.254     ; 1.086      ;
+; -0.836 ; milCounter:counter|out[1]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.269     ; 1.554      ;
+; -0.836 ; milCounter:counter|out[4]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.779      ;
+; -0.836 ; milCounter:counter|out[1]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.269     ; 1.554      ;
+; -0.836 ; milCounter:counter|out[4]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.779      ;
+; -0.836 ; milCounter:counter|out[1]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.269     ; 1.554      ;
+; -0.836 ; milCounter:counter|out[4]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.779      ;
+; -0.836 ; milCounter:counter|out[1]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.269     ; 1.554      ;
+; -0.836 ; milCounter:counter|out[4]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.779      ;
+; -0.836 ; milCounter:counter|out[1]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.269     ; 1.554      ;
+; -0.836 ; milCounter:counter|out[4]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.779      ;
+; -0.836 ; milCounter:counter|out[1]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.269     ; 1.554      ;
+; -0.836 ; milCounter:counter|out[4]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.779      ;
+; -0.836 ; milCounter:counter|out[1]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.269     ; 1.554      ;
+; -0.836 ; milCounter:counter|out[4]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.779      ;
+; -0.826 ; milCounter:counter|out[11] ; servoClk                  ; clk          ; clk         ; 0.500        ; -0.259     ; 1.054      ;
+; -0.819 ; milCounter:counter|out[3]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.762      ;
+; -0.819 ; milCounter:counter|out[3]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.762      ;
+; -0.819 ; milCounter:counter|out[3]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.762      ;
+; -0.819 ; milCounter:counter|out[3]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.762      ;
+; -0.819 ; milCounter:counter|out[3]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.762      ;
+; -0.819 ; milCounter:counter|out[3]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.762      ;
+; -0.819 ; milCounter:counter|out[3]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.762      ;
+; -0.802 ; milCounter:counter|out[15] ; servoClk                  ; clk          ; clk         ; 0.500        ; -0.259     ; 1.030      ;
+; -0.798 ; milCounter:counter|out[8]  ; servoClk                  ; clk          ; clk         ; 0.500        ; -0.260     ; 1.025      ;
+; -0.796 ; milCounter:counter|out[7]  ; servoClk                  ; clk          ; clk         ; 0.500        ; -0.254     ; 1.029      ;
+; -0.790 ; milCounter:counter|out[13] ; servoClk                  ; clk          ; clk         ; 0.500        ; -0.259     ; 1.018      ;
+; -0.782 ; milCounter:counter|out[0]  ; servoClk                  ; clk          ; clk         ; 0.500        ; -0.254     ; 1.015      ;
+; -0.766 ; milCounter:counter|out[14] ; servoClk                  ; clk          ; clk         ; 0.500        ; -0.259     ; 0.994      ;
+; -0.766 ; milCounter:counter|out[1]  ; milCounter:counter|out[8] ; clk          ; clk         ; 1.000        ; -0.263     ; 1.490      ;
+; -0.751 ; milCounter:counter|out[2]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.694      ;
+; -0.751 ; milCounter:counter|out[2]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.694      ;
+; -0.751 ; milCounter:counter|out[2]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.694      ;
+; -0.751 ; milCounter:counter|out[2]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.694      ;
+; -0.751 ; milCounter:counter|out[2]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.694      ;
+; -0.751 ; milCounter:counter|out[2]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.694      ;
+; -0.751 ; milCounter:counter|out[2]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.694      ;
+; -0.748 ; milCounter:counter|out[10] ; servoClk                  ; clk          ; clk         ; 0.500        ; -0.259     ; 0.976      ;
+; -0.734 ; milCounter:counter|out[6]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.677      ;
+; -0.734 ; milCounter:counter|out[6]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.677      ;
+; -0.734 ; milCounter:counter|out[6]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.677      ;
+; -0.734 ; milCounter:counter|out[6]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.677      ;
+; -0.734 ; milCounter:counter|out[6]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.677      ;
+; -0.734 ; milCounter:counter|out[6]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.677      ;
+; -0.734 ; milCounter:counter|out[6]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.677      ;
+; -0.697 ; milCounter:counter|out[5]  ; milCounter:counter|out[8] ; clk          ; clk         ; 1.000        ; -0.038     ; 1.646      ;
+; -0.694 ; milCounter:counter|out[11] ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.632      ;
+; -0.694 ; milCounter:counter|out[11] ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.632      ;
+; -0.694 ; milCounter:counter|out[11] ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.632      ;
+; -0.694 ; milCounter:counter|out[11] ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.632      ;
+; -0.694 ; milCounter:counter|out[11] ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.632      ;
+; -0.694 ; milCounter:counter|out[11] ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.632      ;
+; -0.694 ; milCounter:counter|out[11] ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.632      ;
+; -0.683 ; milCounter:counter|out[15] ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.621      ;
+; -0.683 ; milCounter:counter|out[15] ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.621      ;
+; -0.683 ; milCounter:counter|out[15] ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.621      ;
+; -0.683 ; milCounter:counter|out[15] ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.621      ;
+; -0.683 ; milCounter:counter|out[15] ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.621      ;
+; -0.683 ; milCounter:counter|out[15] ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.621      ;
+; -0.683 ; milCounter:counter|out[15] ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.621      ;
+; -0.679 ; milCounter:counter|out[8]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.050     ; 1.616      ;
+; -0.679 ; milCounter:counter|out[8]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.050     ; 1.616      ;
+; -0.679 ; milCounter:counter|out[8]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.050     ; 1.616      ;
+; -0.679 ; milCounter:counter|out[8]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.050     ; 1.616      ;
+; -0.679 ; milCounter:counter|out[8]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.050     ; 1.616      ;
+; -0.679 ; milCounter:counter|out[8]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.050     ; 1.616      ;
+; -0.679 ; milCounter:counter|out[8]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.050     ; 1.616      ;
+; -0.677 ; milCounter:counter|out[7]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.620      ;
+; -0.677 ; milCounter:counter|out[7]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.620      ;
+; -0.677 ; milCounter:counter|out[7]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.620      ;
+; -0.677 ; milCounter:counter|out[7]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.620      ;
+; -0.677 ; milCounter:counter|out[7]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.620      ;
+; -0.677 ; milCounter:counter|out[7]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.620      ;
+; -0.677 ; milCounter:counter|out[7]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.620      ;
+; -0.671 ; milCounter:counter|out[13] ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.609      ;
+; -0.671 ; milCounter:counter|out[13] ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.609      ;
+; -0.671 ; milCounter:counter|out[13] ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.609      ;
+; -0.671 ; milCounter:counter|out[13] ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.609      ;
+; -0.671 ; milCounter:counter|out[13] ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.609      ;
+; -0.671 ; milCounter:counter|out[13] ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.609      ;
+; -0.671 ; milCounter:counter|out[13] ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.049     ; 1.609      ;
+; -0.663 ; milCounter:counter|out[0]  ; milCounter:counter|out[0] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.606      ;
+; -0.663 ; milCounter:counter|out[0]  ; milCounter:counter|out[2] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.606      ;
+; -0.663 ; milCounter:counter|out[0]  ; milCounter:counter|out[3] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.606      ;
+; -0.663 ; milCounter:counter|out[0]  ; milCounter:counter|out[7] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.606      ;
+; -0.663 ; milCounter:counter|out[0]  ; milCounter:counter|out[4] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.606      ;
+; -0.663 ; milCounter:counter|out[0]  ; milCounter:counter|out[5] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.606      ;
+; -0.663 ; milCounter:counter|out[0]  ; milCounter:counter|out[6] ; clk          ; clk         ; 1.000        ; -0.044     ; 1.606      ;
++--------+----------------------------+---------------------------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Hold: 'clk'                                                                                                      ;
++-------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                  ; To Node                    ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+; 0.175 ; servoClk                   ; servoClk                   ; clk          ; clk         ; 0.000        ; 0.048      ; 0.307      ;
+; 0.201 ; milCounter:counter|out[18] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.329      ;
+; 0.293 ; milCounter:counter|out[1]  ; milCounter:counter|out[1]  ; clk          ; clk         ; 0.000        ; 0.052      ; 0.429      ;
+; 0.298 ; milCounter:counter|out[11] ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.426      ;
+; 0.299 ; milCounter:counter|out[0]  ; milCounter:counter|out[1]  ; clk          ; clk         ; 0.000        ; 0.269      ; 0.652      ;
+; 0.300 ; milCounter:counter|out[9]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.428      ;
+; 0.302 ; milCounter:counter|out[5]  ; milCounter:counter|out[5]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.430      ;
+; 0.302 ; milCounter:counter|out[10] ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.430      ;
+; 0.302 ; milCounter:counter|out[12] ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.430      ;
+; 0.303 ; milCounter:counter|out[4]  ; milCounter:counter|out[4]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.431      ;
+; 0.303 ; milCounter:counter|out[13] ; milCounter:counter|out[13] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.431      ;
+; 0.303 ; milCounter:counter|out[14] ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.431      ;
+; 0.303 ; milCounter:counter|out[17] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.431      ;
+; 0.304 ; milCounter:counter|out[16] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.432      ;
+; 0.362 ; milCounter:counter|out[3]  ; milCounter:counter|out[3]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.490      ;
+; 0.369 ; milCounter:counter|out[2]  ; milCounter:counter|out[2]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.497      ;
+; 0.369 ; milCounter:counter|out[7]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.497      ;
+; 0.369 ; milCounter:counter|out[6]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.497      ;
+; 0.370 ; milCounter:counter|out[15] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.498      ;
+; 0.375 ; milCounter:counter|out[0]  ; milCounter:counter|out[0]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.503      ;
+; 0.447 ; milCounter:counter|out[11] ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.575      ;
+; 0.449 ; milCounter:counter|out[9]  ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.577      ;
+; 0.451 ; milCounter:counter|out[5]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.579      ;
+; 0.452 ; milCounter:counter|out[17] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.580      ;
+; 0.452 ; milCounter:counter|out[13] ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.580      ;
+; 0.460 ; milCounter:counter|out[10] ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.588      ;
+; 0.460 ; milCounter:counter|out[12] ; milCounter:counter|out[13] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.588      ;
+; 0.461 ; milCounter:counter|out[4]  ; milCounter:counter|out[5]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.589      ;
+; 0.461 ; milCounter:counter|out[14] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.589      ;
+; 0.462 ; milCounter:counter|out[16] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.590      ;
+; 0.463 ; milCounter:counter|out[10] ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.591      ;
+; 0.463 ; milCounter:counter|out[12] ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.591      ;
+; 0.464 ; milCounter:counter|out[14] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.592      ;
+; 0.464 ; milCounter:counter|out[4]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.592      ;
+; 0.465 ; milCounter:counter|out[16] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.593      ;
+; 0.510 ; milCounter:counter|out[11] ; milCounter:counter|out[13] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.638      ;
+; 0.511 ; milCounter:counter|out[3]  ; milCounter:counter|out[4]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.639      ;
+; 0.512 ; milCounter:counter|out[9]  ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.640      ;
+; 0.513 ; milCounter:counter|out[11] ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.641      ;
+; 0.514 ; milCounter:counter|out[5]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.642      ;
+; 0.515 ; milCounter:counter|out[13] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.643      ;
+; 0.515 ; milCounter:counter|out[9]  ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.643      ;
+; 0.518 ; milCounter:counter|out[13] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.646      ;
+; 0.519 ; milCounter:counter|out[15] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.647      ;
+; 0.526 ; milCounter:counter|out[10] ; milCounter:counter|out[13] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.654      ;
+; 0.526 ; milCounter:counter|out[12] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.654      ;
+; 0.527 ; milCounter:counter|out[2]  ; milCounter:counter|out[3]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.655      ;
+; 0.527 ; milCounter:counter|out[0]  ; milCounter:counter|out[2]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.655      ;
+; 0.527 ; milCounter:counter|out[14] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.655      ;
+; 0.527 ; milCounter:counter|out[6]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.655      ;
+; 0.527 ; milCounter:counter|out[4]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.655      ;
+; 0.529 ; milCounter:counter|out[10] ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.657      ;
+; 0.529 ; milCounter:counter|out[12] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.657      ;
+; 0.530 ; milCounter:counter|out[14] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.658      ;
+; 0.530 ; milCounter:counter|out[2]  ; milCounter:counter|out[4]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.658      ;
+; 0.574 ; milCounter:counter|out[3]  ; milCounter:counter|out[5]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.702      ;
+; 0.575 ; milCounter:counter|out[5]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.049      ; 0.708      ;
+; 0.576 ; milCounter:counter|out[11] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.704      ;
+; 0.576 ; milCounter:counter|out[7]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.049      ; 0.709      ;
+; 0.577 ; milCounter:counter|out[3]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.705      ;
+; 0.578 ; milCounter:counter|out[5]  ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.049      ; 0.711      ;
+; 0.578 ; milCounter:counter|out[9]  ; milCounter:counter|out[13] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.706      ;
+; 0.579 ; milCounter:counter|out[11] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.707      ;
+; 0.579 ; milCounter:counter|out[7]  ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.049      ; 0.712      ;
+; 0.581 ; milCounter:counter|out[13] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.709      ;
+; 0.581 ; milCounter:counter|out[9]  ; milCounter:counter|out[14] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.709      ;
+; 0.582 ; milCounter:counter|out[15] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.710      ;
+; 0.584 ; milCounter:counter|out[13] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.712      ;
+; 0.585 ; milCounter:counter|out[15] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.713      ;
+; 0.588 ; milCounter:counter|out[6]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.049      ; 0.721      ;
+; 0.588 ; milCounter:counter|out[4]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.049      ; 0.721      ;
+; 0.590 ; milCounter:counter|out[0]  ; milCounter:counter|out[3]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.718      ;
+; 0.591 ; milCounter:counter|out[6]  ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.049      ; 0.724      ;
+; 0.591 ; milCounter:counter|out[4]  ; milCounter:counter|out[10] ; clk          ; clk         ; 0.000        ; 0.049      ; 0.724      ;
+; 0.592 ; milCounter:counter|out[10] ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.720      ;
+; 0.592 ; milCounter:counter|out[12] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.720      ;
+; 0.593 ; milCounter:counter|out[0]  ; milCounter:counter|out[4]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.721      ;
+; 0.593 ; milCounter:counter|out[2]  ; milCounter:counter|out[5]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.721      ;
+; 0.595 ; milCounter:counter|out[10] ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.723      ;
+; 0.595 ; milCounter:counter|out[12] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.723      ;
+; 0.596 ; milCounter:counter|out[2]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.724      ;
+; 0.640 ; milCounter:counter|out[3]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.768      ;
+; 0.641 ; milCounter:counter|out[5]  ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.049      ; 0.774      ;
+; 0.642 ; milCounter:counter|out[11] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.770      ;
+; 0.642 ; milCounter:counter|out[7]  ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.049      ; 0.775      ;
+; 0.644 ; milCounter:counter|out[5]  ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.049      ; 0.777      ;
+; 0.644 ; milCounter:counter|out[9]  ; milCounter:counter|out[15] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.772      ;
+; 0.645 ; milCounter:counter|out[11] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.773      ;
+; 0.645 ; milCounter:counter|out[7]  ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.049      ; 0.778      ;
+; 0.647 ; milCounter:counter|out[9]  ; milCounter:counter|out[16] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.775      ;
+; 0.654 ; milCounter:counter|out[6]  ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.049      ; 0.787      ;
+; 0.654 ; milCounter:counter|out[4]  ; milCounter:counter|out[11] ; clk          ; clk         ; 0.000        ; 0.049      ; 0.787      ;
+; 0.656 ; milCounter:counter|out[0]  ; milCounter:counter|out[5]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.784      ;
+; 0.657 ; milCounter:counter|out[6]  ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.049      ; 0.790      ;
+; 0.657 ; milCounter:counter|out[4]  ; milCounter:counter|out[12] ; clk          ; clk         ; 0.000        ; 0.049      ; 0.790      ;
+; 0.658 ; milCounter:counter|out[10] ; milCounter:counter|out[17] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.786      ;
+; 0.659 ; milCounter:counter|out[0]  ; milCounter:counter|out[6]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.787      ;
+; 0.659 ; milCounter:counter|out[2]  ; milCounter:counter|out[7]  ; clk          ; clk         ; 0.000        ; 0.044      ; 0.787      ;
+; 0.661 ; milCounter:counter|out[8]  ; milCounter:counter|out[9]  ; clk          ; clk         ; 0.000        ; 0.043      ; 0.788      ;
+; 0.661 ; milCounter:counter|out[10] ; milCounter:counter|out[18] ; clk          ; clk         ; 0.000        ; 0.044      ; 0.789      ;
++-------+----------------------------+----------------------------+--------------+-------------+--------------+------------+------------+
+
+
+----------------------------------------------
+; Fast 1200mV 0C Model Metastability Summary ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++-------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                           ;
++------------------+---------+-------+----------+---------+---------------------+
+; Clock            ; Setup   ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+---------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -2.859  ; 0.175 ; N/A      ; N/A     ; -3.000              ;
+;  clk             ; -2.859  ; 0.175 ; N/A      ; N/A     ; -3.000              ;
+; Design-wide TNS  ; -50.565 ; 0.0   ; 0.0      ; 0.0     ; -28.7               ;
+;  clk             ; -50.565 ; 0.000 ; N/A      ; N/A     ; -28.700             ;
++------------------+---------+-------+----------+---------+---------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Board Trace Model Assignments                                                                                                                                                                                                                                                                                                                                                                                    ;
++---------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; Pin           ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
++---------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; servoX        ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ~ALTERA_DCLK~ ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ~ALTERA_nCEO~ ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
++---------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+
+
++----------------------------------------------------------------------------+
+; Input Transition Times                                                     ;
++-------------------------+--------------+-----------------+-----------------+
+; Pin                     ; I/O Standard ; 10-90 Rise Time ; 90-10 Fall Time ;
++-------------------------+--------------+-----------------+-----------------+
+; clk                     ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; reset                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; x[7]                    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; x[4]                    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; x[5]                    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; x[6]                    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; x[3]                    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; x[1]                    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; x[0]                    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; x[2]                    ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_ASDO_DATA1~     ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_FLASH_nCE_nCSO~ ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_DATA0~          ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
++-------------------------+--------------+-----------------+-----------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1200mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; servoX        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 4.49e-09 V                   ; 2.38 V              ; -0.00552 V          ; 0.096 V                              ; 0.019 V                              ; 4.18e-10 s                  ; 3.59e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 4.49e-09 V                  ; 2.38 V             ; -0.00552 V         ; 0.096 V                             ; 0.019 V                             ; 4.18e-10 s                 ; 3.59e-10 s                 ; No                        ; Yes                       ;
+; ~ALTERA_DCLK~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.67e-09 V                   ; 2.38 V              ; -0.0485 V           ; 0.167 V                              ; 0.096 V                              ; 2.95e-10 s                  ; 2.73e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 2.67e-09 V                  ; 2.38 V             ; -0.0485 V          ; 0.167 V                             ; 0.096 V                             ; 2.95e-10 s                 ; 2.73e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_nCEO~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 4.18e-09 V                   ; 2.38 V              ; -0.00483 V          ; 0.152 V                              ; 0.012 V                              ; 4.81e-10 s                  ; 6.29e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 4.18e-09 V                  ; 2.38 V             ; -0.00483 V         ; 0.152 V                             ; 0.012 V                             ; 4.81e-10 s                 ; 6.29e-10 s                 ; Yes                       ; Yes                       ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1200mv 85c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; servoX        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.92e-07 V                   ; 2.35 V              ; -0.00996 V          ; 0.121 V                              ; 0.03 V                               ; 4.64e-10 s                  ; 4.47e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 6.92e-07 V                  ; 2.35 V             ; -0.00996 V         ; 0.121 V                             ; 0.03 V                              ; 4.64e-10 s                 ; 4.47e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_DCLK~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.75e-07 V                   ; 2.35 V              ; -0.0109 V           ; 0.084 V                              ; 0.027 V                              ; 4.31e-10 s                  ; 3.61e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 3.75e-07 V                  ; 2.35 V             ; -0.0109 V          ; 0.084 V                             ; 0.027 V                             ; 4.31e-10 s                 ; 3.61e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_nCEO~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 6.15e-07 V                   ; 2.35 V              ; -0.00712 V          ; 0.093 V                              ; 0.02 V                               ; 6.21e-10 s                  ; 7.9e-10 s                   ; Yes                        ; Yes                        ; 2.32 V                      ; 6.15e-07 V                  ; 2.35 V             ; -0.00712 V         ; 0.093 V                             ; 0.02 V                              ; 6.21e-10 s                 ; 7.9e-10 s                  ; Yes                       ; Yes                       ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1200mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; servoX        ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 4.05e-08 V                   ; 2.72 V              ; -0.0349 V           ; 0.173 V                              ; 0.1 V                                ; 2.72e-10 s                  ; 2.69e-10 s                  ; Yes                        ; Yes                        ; 2.62 V                      ; 4.05e-08 V                  ; 2.72 V             ; -0.0349 V          ; 0.173 V                             ; 0.1 V                               ; 2.72e-10 s                 ; 2.69e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_DCLK~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 2.22e-08 V                   ; 2.74 V              ; -0.06 V             ; 0.158 V                              ; 0.08 V                               ; 2.68e-10 s                  ; 2.19e-10 s                  ; Yes                        ; Yes                        ; 2.62 V                      ; 2.22e-08 V                  ; 2.74 V             ; -0.06 V            ; 0.158 V                             ; 0.08 V                              ; 2.68e-10 s                 ; 2.19e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_nCEO~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 3.54e-08 V                   ; 2.7 V               ; -0.00943 V          ; 0.276 V                              ; 0.035 V                              ; 3.19e-10 s                  ; 4.99e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 3.54e-08 V                  ; 2.7 V              ; -0.00943 V         ; 0.276 V                             ; 0.035 V                             ; 3.19e-10 s                 ; 4.99e-10 s                 ; No                        ; Yes                       ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 1        ; 19       ; 0        ; 551      ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 1        ; 19       ; 0        ; 551      ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 9     ; 9    ;
+; Unconstrained Input Port Paths  ; 27    ; 27   ;
+; Unconstrained Output Ports      ; 1     ; 1    ;
+; Unconstrained Output Port Paths ; 27    ; 27   ;
++---------------------------------+-------+------+
+
+
++-------------------------------------+
+; Clock Status Summary                ;
++--------+-------+------+-------------+
+; Target ; Clock ; Type ; Status      ;
++--------+-------+------+-------------+
+; clk    ; clk   ; Base ; Constrained ;
++--------+-------+------+-------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[0]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[1]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[2]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[3]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[4]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[5]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[6]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[7]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; servoX      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[0]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[1]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[2]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[3]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[4]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[5]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[6]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; x[7]       ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; servoX      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime TimeQuest Timing Analyzer
+    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+    Info: Processing started: Sun Dec 03 14:49:47 2017
+Info: Command: quartus_sta final-project -c final-project
+Info: qsta_default_script.tcl version: #3
+Info (20032): Parallel compilation is enabled and will use up to 4 processors
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'final-project.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name clk clk
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow 1200mV 85C Model
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -2.859
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.859             -50.565 clk 
+Info (332146): Worst-case hold slack is 0.386
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.386               0.000 clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000             -28.700 clk 
+Info: Analyzing Slow 1200mV 0C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -2.560
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.560             -44.888 clk 
+Info (332146): Worst-case hold slack is 0.339
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.339               0.000 clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000             -28.700 clk 
+Info: Analyzing Fast 1200mV 0C Model
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
+Info (332146): Worst-case setup slack is -0.990
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.990             -14.668 clk 
+Info (332146): Worst-case hold slack is 0.175
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.175               0.000 clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000             -25.084 clk 
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 704 megabytes
+    Info: Processing ended: Sun Dec 03 14:49:51 2017
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:03
+
+
