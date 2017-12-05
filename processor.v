@@ -38,9 +38,9 @@
  */
 
 
-module processor(clock, reset, dmem_data_in, dmem_address
+module processor(clock, reset, dmem_data_in, dmem_address,
 	
-	/*gatedClk, fetchInsn, 
+	gatedClk, fetchInsn, 
 	
 	//Fetch I/O
 	pcF, immF, targetF, opcodeF, rdF, rsF, rtF, shamtF, aluOpF, jumpCtrlF, branchCtrlF,
@@ -78,7 +78,7 @@ module processor(clock, reset, dmem_data_in, dmem_address
     regWriteValW, writeRegW, writeSelectW,
 
     //Bypass logic
-    aluASel, aluBSel, regAValByp, regBValByp, dMemInM*/
+    aluASel, aluBSel, regAValByp, regBValByp, dMemInM
 );
 
 
@@ -88,73 +88,74 @@ module processor(clock, reset, dmem_data_in, dmem_address
     output[11:0] dmem_address;
 
     //TODO: Replace with proper stall logic
-    wire gatedClk;
+    output gatedClk;
 
     //Fetch outputs
-    wire[31:0] fetchInsn;
-    wire[31:0] pcF, immF, targetF;
-    wire[4:0] opcodeF, rdF, rsF, rtF, shamtF, aluOpF;
-    wire[1:0] jumpCtrlF, branchCtrlF;
-	wire regWriteEnF, aluInBF, loadDataF, storeDataF, setxCtrlF;    
+    output[31:0] fetchInsn;
+    output[31:0] pcF, immF, targetF;
+    output[4:0] opcodeF, rdF, rsF, rtF, shamtF, aluOpF;
+    output[1:0] jumpCtrlF, branchCtrlF;
+	output regWriteEnF, aluInBF, loadDataF, storeDataF, setxCtrlF;    
 
     //FD Latch outputs
-    wire[31:0] pcFD, immFD, targetFD; 
-    wire[4:0] opcodeFD, rdFD, rsFD, rtFD, shamtFD, aluOpFD;
-    wire[1:0] jumpCtrlFD, branchCtrlFD;
-	wire regWriteEnFD, aluInBFD, loadDataFD, storeDataFD, setxCtrlFD;
+    output[31:0] pcFD, immFD, targetFD; 
+    output[4:0] opcodeFD, rdFD, rsFD, rtFD, shamtFD, aluOpFD;
+    output[1:0] jumpCtrlFD, branchCtrlFD;
+	output regWriteEnFD, aluInBFD, loadDataFD, storeDataFD, setxCtrlFD;
 
     //Regfile I/O
-    wire[31:0] regAValD, regBValD;
+    output[31:0] regAValD, regBValD;
 
     //Stall logic
     wire dstall;
     wire loadDX, rsHit, rdHit, storeFD;
     
     //DX Latch outputs
-	wire[31:0] pcDX, immDX, targetDX; 
-    wire[4:0] opcodeDX, rdDX, rsDX, rtDX, shamtDX, aluOpDX;
-    wire[1:0] jumpCtrlDX, branchCtrlDX;
-	wire regWriteEnDX, aluInBDX, loadDataDX, storeDataDX, setxCtrlDX;
-	wire[31:0] regAValDX, regBValDX;
+	output[31:0] pcDX, immDX, targetDX; 
+    output[4:0] opcodeDX, rdDX, rsDX, rtDX, shamtDX, aluOpDX;
+    output[1:0] jumpCtrlDX, branchCtrlDX;
+	output regWriteEnDX, aluInBDX, loadDataDX, storeDataDX, setxCtrlDX;
+	output[31:0] regAValDX, regBValDX;
  
     //Execute I/O
-    wire[31:0] execResultX;
-    wire execErrorX, execReadyX, argsLessThanX, argsNotEqualX;
+    output[31:0] execResultX;
+    output execErrorX, execReadyX, argsLessThanX, argsNotEqualX;
 
     //X stage bypass logic
-    wire[1:0] aluASel, aluBSel;
-	wire[31:0] regAValByp, regBValByp;
-	wire bypAStore0, bypAStore1, bypANormal0, bypANormal1, isSW, isBranch;
+    output[1:0] aluASel, aluBSel;
+	output[31:0] regAValByp, regBValByp;
+	wire bypASpecial0, bypASpecial1, bypANormal0, bypANormal1, isSW, isBranch;
+	wire bypBNormal0, bypBNormal1;
 
     //Branch logic
-    wire[31:0] nextPCX;
-    wire pcOverrideX;
+    output[31:0] nextPCX;
+    output pcOverrideX;
 
     //XM Latch outputs
-    wire[31:0] pcXM, immXM, targetXM; 
-    wire[4:0] opcodeXM, rdXM, rsXM, rtXM, shamtXM, aluOpXM;
-    wire[1:0] jumpCtrlXM, branchCtrlXM;
-	wire regWriteEnXM, aluInBXM, loadDataXM, storeDataXM, setxCtrlXM, execErrorXM;
-	wire[31:0] execResultXM, regBValXM;
+    output[31:0] pcXM, immXM, targetXM; 
+    output[4:0] opcodeXM, rdXM, rsXM, rtXM, shamtXM, aluOpXM;
+    output[1:0] jumpCtrlXM, branchCtrlXM;
+	output regWriteEnXM, aluInBXM, loadDataXM, storeDataXM, setxCtrlXM, execErrorXM;
+	output[31:0] execResultXM, regBValXM;
 
     //Data mem I/O
-    wire[31:0] dMemOutM;
-    wire[31:0] dMemInM;
+    output[31:0] dMemOutM;
+    output[31:0] dMemInM;
 
     //MW Latch outputs
-    wire[31:0] pcMW, immMW, targetMW; 
-    wire[4:0] opcodeMW, rdMW, rsMW, rtMW, shamtMW, aluOpMW;
-    wire[1:0] jumpCtrlMW, branchCtrlMW;
-	wire regWriteEnMW, aluInBMW, loadDataMW, storeDataMW, setxCtrlMW, execErrorMW;
-	wire[31:0] execResultMW, dMemOutMW;
+    output[31:0] pcMW, immMW, targetMW; 
+    output[4:0] opcodeMW, rdMW, rsMW, rtMW, shamtMW, aluOpMW;
+    output[1:0] jumpCtrlMW, branchCtrlMW;
+	output regWriteEnMW, aluInBMW, loadDataMW, storeDataMW, setxCtrlMW, execErrorMW;
+	output[31:0] execResultMW, dMemOutMW;
 
 	//WM bypass logic
 	wire dMemDataSel;
 
     //Writeback I/O
-    wire[31:0] regWriteValW;
-    wire[4:0] writeRegW;
-    wire[1:0] writeSelectW;
+    output[31:0] regWriteValW;
+    output[4:0] writeRegW;
+    output[1:0] writeSelectW;
 
     wire gnd;
 
@@ -163,6 +164,7 @@ module processor(clock, reset, dmem_data_in, dmem_address
     fetch fetchStage(
     	nextPCX, (execReadyX & ~dstall),
     	pcOverrideX,
+    	jumpCtrlDX, branchCtrlDX,
     	gatedClk, reset, 
     	pcF, fetchInsn
     );
@@ -217,7 +219,7 @@ module processor(clock, reset, dmem_data_in, dmem_address
     	rdMW, rsFD, rtFD, 
 		writeRegW, regWriteValW, 
 		pcFD,
-		regWriteEnFD, 
+		regWriteEnMW, 
 		branchCtrlFD, jumpCtrlFD,
 		storeDataFD,
 		gatedClk, reset, 
@@ -252,20 +254,26 @@ module processor(clock, reset, dmem_data_in, dmem_address
 	//BYPASSING (WX, MX)
 		//ALUinA
 		equalityChecker mxBypassAn(rsDX, rdXM, bypANormal0);
-		equalityChecker mxBypassAs(rdDX, rdXM, bypAStore0);
+		equalityChecker mxBypassAs(rdDX, rdXM, bypASpecial0); //Stores and branches read from $rd and $rs
 		equalityChecker wxBypassAn(rsDX, rdMW, bypANormal1);
-		equalityChecker wxBypassAs(rdDX, rdMW, bypAStore1);
+		equalityChecker wxBypassAs(rdDX, rdMW, bypASpecial1); //Stores and branches read from $rd and $rs
+		
 		assign isSW = ~opcodeDX[4] & ~opcodeDX[3] & opcodeDX[2] & opcodeDX[1] & opcodeDX[0];
 		assign isBranch = branchCtrlDX[1] | branchCtrlDX[0];
-		assign aluASel[0] = (bypANormal0 & ~(isSW | isBranch)) | (bypAStore0 & (isSW | isBranch));
-		assign aluASel[1] = (bypANormal1 & ~(isSW | isBranch)) | (bypAStore1 & (isSW | isBranch));
+		
+		assign aluASel[0] = (bypANormal0 & ~(isSW | isBranch)) | (bypASpecial0 & (isSW | isBranch));
+		assign aluASel[1] = (bypANormal1 & ~(isSW | isBranch)) | (bypASpecial1 & (isSW | isBranch));
 		mux4to1 bypALUa(
 			.in0(regAValDX), .in1(execResultXM), .in2(regWriteValW), .in3(execResultXM), 
 			.sel(aluASel), .out(regAValByp));
 
 		//ALUinB
-		equalityChecker mxBypassB(rtDX, rdXM, aluBSel[0]);
-		equalityChecker wxBypassBn(rtDX, rdMW, aluBSel[1]);
+		equalityChecker mxBypassB(rtDX, rdXM, bypBNormal0);
+		equalityChecker wxBypassBn(rtDX, rdMW, bypBNormal1);
+
+		//if branch or store, second input must be RS
+		assign aluBSel[0] = (bypBNormal0 & ~(isSW | isBranch)) | (bypANormal0 & (isSW | isBranch));
+		assign aluBSel[1] = (bypBNormal1 & ~(isSW | isBranch)) | (bypANormal1 & (isSW | isBranch));
 		mux4to1 bypALUb(
 			.in0(regBValDX), .in1(execResultXM), .in2(regWriteValW), .in3(execResultXM), 
 			.sel(aluBSel), .out(regBValByp));
@@ -373,16 +381,18 @@ endmodule //processor
 module fetch( 
 	nextPC, advancePC,
 	pcOverride, 
+	jumpCtrl, branchCtrl,
     clock, reset, 
     incrPC, insn
 );
 
 	input[31:0] nextPC;
+	input[1:0] jumpCtrl, branchCtrl;
 	input clock, reset, advancePC, pcOverride;
 
 	output[31:0] incrPC, insn;
 
-	wire[31:0] currPC, updatedPC;
+	wire[31:0] currPC, updatedPC, imemRead;
 	wire gnd;
 
 	//Store the PC
@@ -391,12 +401,18 @@ module fetch(
 	//PC Increment logic (normal, branch, jump)
 	cla addOne(.a(currPC), .b(32'd1), .sub(1'b0), .sum(incrPC), .ovf(gnd), .lessThan(gnd)); //PC++
 
-	assign updatedPC = pcOverride ? nextPC : incrPC; //By default assume PC increments by 1. If jump or branch, flush insns.
+	//By default assume PC increments by 1. If jump or branch, flush insns.
+	assign updatedPC = pcOverride & (branchCtrl[1] | branchCtrl[0]) ? nextPC+1 : 32'bz; 
+	assign updatedPC = pcOverride & (jumpCtrl[1] | jumpCtrl[0]) ? nextPC-1 : 32'bz;
+	assign updatedPC = ~pcOverride ? incrPC : 32'bz;
+	
+	assign imemRead = pcOverride & (branchCtrl[1] | branchCtrl[0]) ? nextPC-1 : 32'bz; //Pass nextPC to resolve branch in X stage
+	assign imemRead = pcOverride & (jumpCtrl[1] | jumpCtrl[0]) ? nextPC-2 : 32'bz;
+	assign imemRead = ~pcOverride ? currPC : 32'bz;
 	
 	imem myimem(
-        .address    (currPC[11:0]),                 // address of data
-		.clken      (1'b1),                         // clock enable (optional)
-		.clock      (clock),                       // may need to invert the clock
+        .address    (imemRead[11:0]),               // address of data
+		.clock      (~clock),                        // may need to invert the clock
 		.q          (insn)                          // the raw instruction
     );
 endmodule //fetch
@@ -447,7 +463,7 @@ module control(
     wire arithOp;
     
     assign regWriteEn = 
-    	~opcode[4] & (~opcode[1] | opcode[0]) & ~(opcode[2] & opcode[1]) & (opcode[2] | opcode[1] | ~opcode[0]) | setxCtrl;
+    	~opcode[4] & (~opcode[1] | opcode[0]) & ~(opcode[2] & opcode[1]) & (opcode[2] | opcode[1] | ~opcode[0]) & ~(jumpCtrl[0] & jumpCtrl[1]) | setxCtrl;
 
     assign setxCtrl = opcode[4] & ~opcode[3] & opcode[2] & ~opcode[1] & opcode[0];
     
@@ -601,7 +617,9 @@ module regFileLogic(
 	fiveBitmux4to1 regB(.in0(rt), .in1(rs), .in2(rs), .in3(5'b0),  .sel(branchCtrl), .out(branchRegSelB));
 
 	//On jr or sw, register B must read rd
-	assign readRegB = (jumpCtrl[1] & jumpCtrl[0]) | storeData ? rd : branchRegSelB;
+	assign readRegB = storeData ? rd : 5'bz;
+	assign readRegB = jumpCtrl[1] & jumpCtrl[0] ? 5'd31 : 5'bz;
+	assign readRegB = ~storeData & ~(jumpCtrl[1] & jumpCtrl[0]) ? branchRegSelB : 5'bz;
 
 	regfile registerfile(
 		.clock(clock),
@@ -742,7 +760,7 @@ endmodule //errorCodeFinder
 
 /**
  * Handles all branch logic
- * Branch syntax: 00-no branch, 01-bne, 10-blt, 11-bex
+ * Branch syntax: 00-no branch, 01-beq, 10-blt, 11-bex
  * Jump sntax: 00-no jump, 01-j, 10-jal, 11-jr 
  */
 module branchLogic(
@@ -765,8 +783,8 @@ module branchLogic(
 	  
 	//Reassign PC based on branchCtrl and branch condition
 	assign branchTaken = ~branchCtrl[1] & ~branchCtrl[0]                 ? 2'b0       : 2'bz; //no branch
-	assign branchTaken = ~branchCtrl[1] &  branchCtrl[0] &  argsNotEqual ? branchCtrl : 2'bz; //bne taken
-	assign branchTaken = ~branchCtrl[1] &  branchCtrl[0] & ~argsNotEqual ? 2'b0       : 2'bz; //bne not taken
+	assign branchTaken = ~branchCtrl[1] &  branchCtrl[0] & ~argsNotEqual ? branchCtrl : 2'bz; //beq taken
+	assign branchTaken = ~branchCtrl[1] &  branchCtrl[0] &  argsNotEqual ? 2'b0       : 2'bz; //beq not taken
 	assign branchTaken =  branchCtrl[1] & ~branchCtrl[0] &  argsLessThan ? branchCtrl : 2'bz; //blt taken
 	assign branchTaken =  branchCtrl[1] & ~branchCtrl[0] &  argsLessThan ? 2'b0       : 2'bz; //blt not taken
 	assign branchTaken =  branchCtrl[1] &  branchCtrl[0] &  argsNotEqual ? branchCtrl : 2'bz; //bex taken

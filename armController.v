@@ -18,9 +18,9 @@ module armController(clk, reset, x, /*y, z,*/ servoX/*, servoY, servoZ*/);
 	end
 
 	//First convert angle to pulse width in microseconds, then convert to ticks
-	assign widthX = ((19'd2000)*x/(19'd180) + 19'd500)*19'd50;
-	//assign widthY = ((19'd2000)*y/(19'd180) + 19'd500)*19'd50;
-	//assign widthZ = ((19'd2000)*z/(19'd180) + 19'd500)*19'd50;
+	assign widthX = 19'd20000 - ((19'd2000)*x/(19'd180) + 19'd500)*19'd50;
+	//assign widthY = 19'd20000 - ((19'd2000)*y/(19'd180) + 19'd500)*19'd50;
+	//assign widthZ = 19'd20000 - ((19'd2000)*z/(19'd180) + 19'd500)*19'd50;
 
 	assign servoX = servoClk & (count < widthX);
 	//assign servoY = servoClk & (count < widthY);

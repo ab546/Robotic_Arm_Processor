@@ -1,0 +1,12 @@
+nop
+addi $r1, $r0, 98
+addi $r2, $r0, 6
+add $r3, $r1, $r2
+jal 8
+beq $r7, $r31, 8
+sub $r4, $r2, $r1
+addi $r5, $r4, 16
+add $r6, $r4, $r5
+add $r7, $r31, $r0
+jr $r31
+nop

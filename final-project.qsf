@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE115F29C7
-set_global_assignment -name TOP_LEVEL_ENTITY armController
+set_global_assignment -name TOP_LEVEL_ENTITY processor
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:02:08  DECEMBER 01, 2017"
 set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Lite Edition"
@@ -63,6 +63,9 @@ set_location_assignment PIN_AC27 -to x[2]
 set_location_assignment PIN_AC28 -to x[1]
 set_location_assignment PIN_AB28 -to x[0]
 set_location_assignment PIN_M23 -to reset
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name VERILOG_FILE gpioTest.v
 set_global_assignment -name VERILOG_FILE armController.v
 set_global_assignment -name VERILOG_FILE signExtender.v
@@ -74,14 +77,10 @@ set_global_assignment -name VERILOG_FILE mux4to1.v
 set_global_assignment -name VERILOG_FILE multiplier.v
 set_global_assignment -name VERILOG_FILE multdiv.v
 set_global_assignment -name VERILOG_FILE leftshifter.v
-set_global_assignment -name VERILOG_FILE imem_bb.v
-set_global_assignment -name VERILOG_FILE imem.v
 set_global_assignment -name VERILOG_FILE fiveBitmux4to1.v
 set_global_assignment -name VERILOG_FILE equalZero.v
 set_global_assignment -name VERILOG_FILE equalityChecker.v
 set_global_assignment -name VERILOG_FILE ecedffe.v
-set_global_assignment -name VERILOG_FILE dmem_bb.v
-set_global_assignment -name VERILOG_FILE dmem.v
 set_global_assignment -name VERILOG_FILE divider.v
 set_global_assignment -name VERILOG_FILE decoder.v
 set_global_assignment -name VERILOG_FILE counter34.v
@@ -89,9 +88,8 @@ set_global_assignment -name VERILOG_FILE counter32.v
 set_global_assignment -name VERILOG_FILE cla.v
 set_global_assignment -name VERILOG_FILE alu.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE simulation/waveform/milCountTest.vwf
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE simulation/waveform/armTester.vwf
+set_global_assignment -name QIP_FILE dmem.qip
+set_global_assignment -name QIP_FILE imem.qip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
