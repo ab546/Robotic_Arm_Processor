@@ -18,7 +18,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "12/04/2017 21:29:09"
+// Generated on "12/05/2017 16:37:14"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          processor
 // 
@@ -51,6 +51,7 @@ wire [1:0] branchCtrlF;
 wire [1:0] branchCtrlFD;
 wire [1:0] branchCtrlMW;
 wire [1:0] branchCtrlXM;
+wire [4:0] coreRegW;
 wire [31:0] dMemInM;
 wire [31:0] dMemOutM;
 wire [31:0] dMemOutMW;
@@ -120,6 +121,16 @@ wire [4:0] rtF;
 wire [4:0] rtFD;
 wire [4:0] rtMW;
 wire [4:0] rtXM;
+wire [1:0] servoDX;
+wire [1:0] servoF;
+wire [1:0] servoFD;
+wire [1:0] servoMW;
+wire servoReadyX;
+wire [4:0] servoRegW;
+wire servoX;
+wire [1:0] servoXM;
+wire servoY;
+wire servoZ;
 wire setxCtrlDX;
 wire setxCtrlF;
 wire setxCtrlFD;
@@ -166,6 +177,7 @@ processor i1 (
 	.branchCtrlMW(branchCtrlMW),
 	.branchCtrlXM(branchCtrlXM),
 	.clock(clock),
+	.coreRegW(coreRegW),
 	.dMemInM(dMemInM),
 	.dMemOutM(dMemOutM),
 	.dMemOutMW(dMemOutMW),
@@ -236,6 +248,16 @@ processor i1 (
 	.rtFD(rtFD),
 	.rtMW(rtMW),
 	.rtXM(rtXM),
+	.servoDX(servoDX),
+	.servoF(servoF),
+	.servoFD(servoFD),
+	.servoMW(servoMW),
+	.servoReadyX(servoReadyX),
+	.servoRegW(servoRegW),
+	.servoX(servoX),
+	.servoXM(servoXM),
+	.servoY(servoY),
+	.servoZ(servoZ),
 	.setxCtrlDX(setxCtrlDX),
 	.setxCtrlF(setxCtrlF),
 	.setxCtrlFD(setxCtrlFD),
@@ -261,7 +283,7 @@ processor i1 (
 );
 initial 
 begin 
-#2000000 $finish;
+#1000000 $finish;
 end 
 
 // clock

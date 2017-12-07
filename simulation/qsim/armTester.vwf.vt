@@ -18,7 +18,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "12/03/2017 14:45:41"
+// Generated on "12/06/2017 12:50:27"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          armController
 // 
@@ -32,16 +32,28 @@ module armController_vlg_vec_tst();
 reg clk;
 reg reset;
 reg [7:0] x;
+reg [7:0] y;
+reg [7:0] z;
 // wires                                               
+wire [19:0] count;
+wire ready;
 wire servoX;
+wire servoY;
+wire servoZ;
 
 // assign statements (if any)                          
 armController i1 (
 // port map - connection between master ports and signals/registers   
 	.clk(clk),
+	.count(count),
+	.ready(ready),
 	.reset(reset),
 	.servoX(servoX),
-	.x(x)
+	.servoY(servoY),
+	.servoZ(servoZ),
+	.x(x),
+	.y(y),
+	.z(z)
 );
 initial 
 begin 

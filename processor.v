@@ -30,15 +30,22 @@
  *
  */
 
+ /**
+  * ISA Updates:
+  * Opcode 01001 - move servox (Store in register 26)
+  * Opcode 01010 - move servoy (store in register 27)
+  * Opcode 01011 - move servoz (store in register 28)
+  */
+
 /**TODO:
- * Bypassing may not work for lw or setx
  * Stalls may clobber instructions
  * Fix multdiv
- * Documentation
  */
 
 
-module processor(clock, reset, dmem_data_in, dmem_address,
+module processor(clock, res, servoX, servoY, servoZ, IRdata, IRswitch, led /*,
+
+    dmem_data_in, dmem_address,
 	
 	gatedClk, fetchInsn, 
 	
@@ -78,88 +85,102 @@ module processor(clock, reset, dmem_data_in, dmem_address,
     regWriteValW, writeRegW, writeSelectW,
 
     //Bypass logic
-    aluASel, aluBSel, regAValByp, regBValByp, dMemInM
+    aluASel, aluBSel, regAValByp, regBValByp, dMemInM,
+
+    //Servo outputs
+    servoF, servoFD, servoDX, servoXM, servoMW, servoReadyX, coreRegW, servoRegW*/
 );
 
 
-    input clock, reset;
+    input clock, res, IRdata, IRswitch;
+    output servoX, servoY, servoZ,led;
+    /*output [31:0] iroutput;
+    assign iroutput=IRout;
+    output irisready, gclk;
+    assign gclk=gatedClk;
+    assign irisready=IRready;
+    output [31:0] testdata;
+    assign testdata=pcF;
+    assign led=(pcF>12'd10);*/
+   	wire[31:0] dmem_data_in;
+    wire[11:0] dmem_address;
 
-    output[31:0] dmem_data_in;
-    output[11:0] dmem_address;
-
-    //TODO: Replace with proper stall logic
-    output gatedClk;
+    wire gatedClk;
 
     //Fetch outputs
-    output[31:0] fetchInsn;
-    output[31:0] pcF, immF, targetF;
-    output[4:0] opcodeF, rdF, rsF, rtF, shamtF, aluOpF;
-    output[1:0] jumpCtrlF, branchCtrlF;
-	output regWriteEnF, aluInBF, loadDataF, storeDataF, setxCtrlF;    
+    wire[31:0] fetchInsn;
+    wire[31:0] pcF, immF, targetF;
+    wire[4:0] opcodeF, rdF, rsF, rtF, shamtF, aluOpF;
+    wire[1:0] jumpCtrlF, branchCtrlF, servoF;
+	wire regWriteEnF, aluInBF, loadDataF, storeDataF, setxCtrlF, irF;    
 
     //FD Latch outputs
-    output[31:0] pcFD, immFD, targetFD; 
-    output[4:0] opcodeFD, rdFD, rsFD, rtFD, shamtFD, aluOpFD;
-    output[1:0] jumpCtrlFD, branchCtrlFD;
-	output regWriteEnFD, aluInBFD, loadDataFD, storeDataFD, setxCtrlFD;
+    wire[31:0] pcFD, immFD, targetFD; 
+    wire[4:0] opcodeFD, rdFD, rsFD, rtFD, shamtFD, aluOpFD;
+    wire[1:0] jumpCtrlFD, branchCtrlFD, servoFD;
+	wire regWriteEnFD, aluInBFD, loadDataFD, storeDataFD, setxCtrlFD, irFD;
 
     //Regfile I/O
-    output[31:0] regAValD, regBValD;
+    wire[31:0] regAValD, regBValD;
 
     //Stall logic
     wire dstall;
     wire loadDX, rsHit, rdHit, storeFD;
     
     //DX Latch outputs
-	output[31:0] pcDX, immDX, targetDX; 
-    output[4:0] opcodeDX, rdDX, rsDX, rtDX, shamtDX, aluOpDX;
-    output[1:0] jumpCtrlDX, branchCtrlDX;
-	output regWriteEnDX, aluInBDX, loadDataDX, storeDataDX, setxCtrlDX;
-	output[31:0] regAValDX, regBValDX;
+	wire[31:0] pcDX, immDX, targetDX; 
+    wire[4:0] opcodeDX, rdDX, rsDX, rtDX, shamtDX, aluOpDX;
+    wire[1:0] jumpCtrlDX, branchCtrlDX, servoDX;
+	wire regWriteEnDX, aluInBDX, loadDataDX, storeDataDX, setxCtrlDX, irDX;
+	wire[31:0] regAValDX, regBValDX;
  
     //Execute I/O
-    output[31:0] execResultX;
-    output execErrorX, execReadyX, argsLessThanX, argsNotEqualX;
+    wire[31:0] execResultX;
+    wire execErrorX, execReadyX, argsLessThanX, argsNotEqualX, servoReadyX;
+    wire [31:0] IRout;
+    wire IRready;
 
     //X stage bypass logic
-    output[1:0] aluASel, aluBSel;
-	output[31:0] regAValByp, regBValByp;
+    wire[1:0] aluASel, aluBSel;
+	wire[31:0] regAValByp, regBValByp;
 	wire bypASpecial0, bypASpecial1, bypANormal0, bypANormal1, isSW, isBranch;
 	wire bypBNormal0, bypBNormal1;
 
     //Branch logic
-    output[31:0] nextPCX;
-    output pcOverrideX;
+    wire[31:0] nextPCX;
+    wire pcOverrideX;
 
     //XM Latch outputs
-    output[31:0] pcXM, immXM, targetXM; 
-    output[4:0] opcodeXM, rdXM, rsXM, rtXM, shamtXM, aluOpXM;
-    output[1:0] jumpCtrlXM, branchCtrlXM;
-	output regWriteEnXM, aluInBXM, loadDataXM, storeDataXM, setxCtrlXM, execErrorXM;
-	output[31:0] execResultXM, regBValXM;
+    wire[31:0] pcXM, immXM, targetXM, irDataXM; 
+    wire[4:0] opcodeXM, rdXM, rsXM, rtXM, shamtXM, aluOpXM;
+    wire[1:0] jumpCtrlXM, branchCtrlXM, servoXM;
+	wire regWriteEnXM, aluInBXM, loadDataXM, storeDataXM, setxCtrlXM, execErrorXM, irXM;
+	wire[31:0] execResultXM, regBValXM;
 
     //Data mem I/O
-    output[31:0] dMemOutM;
-    output[31:0] dMemInM;
+    wire[31:0] dMemOutM;
+    wire[31:0] dMemInM;
 
     //MW Latch outputs
-    output[31:0] pcMW, immMW, targetMW; 
-    output[4:0] opcodeMW, rdMW, rsMW, rtMW, shamtMW, aluOpMW;
-    output[1:0] jumpCtrlMW, branchCtrlMW;
-	output regWriteEnMW, aluInBMW, loadDataMW, storeDataMW, setxCtrlMW, execErrorMW;
-	output[31:0] execResultMW, dMemOutMW;
+    wire[31:0] pcMW, immMW, targetMW, irDataMW; 
+    wire[4:0] opcodeMW, rdMW, rsMW, rtMW, shamtMW, aluOpMW;
+    wire[1:0] jumpCtrlMW, branchCtrlMW, servoMW;
+	wire regWriteEnMW, aluInBMW, loadDataMW, storeDataMW, setxCtrlMW, execErrorMW, irMW;
+	wire[31:0] execResultMW, dMemOutMW;
 
 	//WM bypass logic
 	wire dMemDataSel;
 
     //Writeback I/O
-    output[31:0] regWriteValW;
-    output[4:0] writeRegW;
-    output[1:0] writeSelectW;
+    wire[31:0] regWriteValW;
+    wire[4:0] coreRegW, servoRegW, writeRegW;
+    wire[1:0] writeSelectW;
 
-    wire gnd;
+    wire gnd, reset;
 
-    and clockGate(gatedClk, execReadyX, clock);
+    //Stall if multiplier is running or servo is being moved
+    and clockGate(gatedClk, execReadyX, clock, servoReadyX, ~(~IRready&irDX) );
+    assign reset = ~res;
 
     fetch fetchStage(
     	nextPCX, (execReadyX & ~dstall),
@@ -177,37 +198,36 @@ module processor(clock, reset, dmem_data_in, dmem_address,
 		regWriteEnF, aluInBF, 
 		jumpCtrlF, branchCtrlF, 
 		loadDataF, storeDataF,
-		setxCtrlF
+		setxCtrlF, servoF, irF
     );
 
-    //TODO: Fix enable/reset for pipeline hazards
 	pipelineLatch latchFD(
 		(gatedClk & ~dstall), 1'b1, pcOverrideX,
 		pcF, opcodeF,
 		rdF, rsF, rtF, 
 		shamtF, aluOpF, 
-		immF, targetF,
+		immF, targetF, 32'b0,
 		regWriteEnF, aluInBF, 
 		jumpCtrlF, branchCtrlF, 
 		loadDataF, storeDataF,
-		setxCtrlF,
+		setxCtrlF, servoF, irF,
 		1'b0,
 		32'b0, 32'b0,
 		pcFD, opcodeFD,
 		rdFD, rsFD, rtFD, 
 		shamtFD, aluOpFD, 
-		immFD, targetFD,
+		immFD, targetFD, gnd,
 		regWriteEnFD, aluInBFD, 
 		jumpCtrlFD, branchCtrlFD, 
 		loadDataFD, storeDataFD,
-		setxCtrlFD,
+		setxCtrlFD, servoFD, irFD,
 		gnd,
 		gnd, gnd
 	);
 
 	wire isRSZero;
 
-	//STALL LOGIC
+	//STALL LOGIC (probably broken)
 		equalityChecker dxLoad(opcodeDX, 5'b01000, loadDX);
 		equalityChecker rsConflict(rsFD, rdDX, rsHit);
 		equalityChecker rdConflict(rdFD, rdDX, rdHit);
@@ -226,27 +246,26 @@ module processor(clock, reset, dmem_data_in, dmem_address,
 		regAValD, regBValD
 	);
 
-    //TODO: Fix enable/reset later
 	pipelineLatch latchDX(
 		gatedClk, 1'b1, dstall,
 		pcFD, opcodeFD,
 		rdFD, rsFD, rtFD, 
 		shamtFD, aluOpFD, 
-		immFD, targetFD,
+		immFD, targetFD, 32'b0,
 		regWriteEnFD, aluInBFD, 
 		jumpCtrlFD, branchCtrlFD, 
 		loadDataFD, storeDataFD,
-		setxCtrlFD,
+		setxCtrlFD, servoFD, irFD,
 		1'b0,
 		regAValD, regBValD,
 		pcDX, opcodeDX,
 		rdDX, rsDX, rtDX, 
 		shamtDX, aluOpDX, 
-		immDX, targetDX,
+		immDX, targetDX, gnd,
 		regWriteEnDX, aluInBDX, 
 		jumpCtrlDX, branchCtrlDX, 
 		loadDataDX, storeDataDX,
-		setxCtrlDX,
+		setxCtrlDX, servoDX, irDX,
 		gnd,
 		regAValDX, regBValDX
 	);
@@ -296,27 +315,28 @@ module processor(clock, reset, dmem_data_in, dmem_address,
 		nextPCX, pcOverrideX
     );
 
-    //TODO: Fix enable/reset
+    servoLogic servoController(clock, (reset | (servoDX == 2'b0)), servoDX, immDX, servoX, servoY, servoZ, servoReadyX);
+    IR_Receiver IR(clock&irDX, reset, IRdata, IRready, IRout,testData);
     pipelineLatch latchXM(
     	gatedClk, 1'b1, 1'b0,
 		pcDX, opcodeDX,
 		rdDX, rsDX, rtDX, 
 		shamtDX, aluOpDX, 
-		immDX, targetDX,
+		immDX, targetDX, IRout,
 		regWriteEnDX, aluInBDX, 
 		jumpCtrlDX, branchCtrlDX, 
 		loadDataDX, storeDataDX,
-		setxCtrlDX,
+		setxCtrlDX, servoDX, irDX,
 		execErrorX, 
 		execResultX, regBValDX,
 		pcXM, opcodeXM,
 		rdXM, rsXM, rtXM, 
 		shamtXM, aluOpXM, 
-		immXM, targetXM,
+		immXM, targetXM, irDataXM,
 		regWriteEnXM, aluInBXM, 
 		jumpCtrlXM, branchCtrlXM, 
 		loadDataXM, storeDataXM,
-		setxCtrlXM,
+		setxCtrlXM, servoXM, irXM,
 		execErrorXM,
 		execResultXM, regBValXM
     );
@@ -335,42 +355,53 @@ module processor(clock, reset, dmem_data_in, dmem_address,
         .q          (dMemOutM)               // data from dmem
     );
 
-    //TODO: Fix enable/reset
     pipelineLatch latchMW(
     	gatedClk, 1'b1, 1'b0,
 		pcXM, opcodeXM,
 		rdXM, rsXM, rtXM, 
 		shamtXM, aluOpXM, 
-		immXM, targetXM,
+		immXM, targetXM, irDataXM,
 		regWriteEnXM, aluInBXM, 
 		jumpCtrlXM, branchCtrlXM, 
 		loadDataXM, storeDataXM,
-		setxCtrlXM,
+		setxCtrlXM, servoXM, irXM,
 		execErrorXM, 
 		execResultXM, dMemOutM,
 		pcMW, opcodeMW,
 		rdMW, rsMW, rtMW, 
 		shamtMW, aluOpMW, 
-		immMW, targetMW,
+		immMW, targetMW, irDataMW,
 		regWriteEnMW, aluInBMW, 
 		jumpCtrlMW, branchCtrlMW, 
 		loadDataMW, storeDataMW,
-		setxCtrlMW,
+		setxCtrlMW, servoMW, irMW,
 		execErrorMW,
 		execResultMW, dMemOutMW
     );
 
     //WRITEBACK STAGE
-	    assign regWriteValW = loadDataMW ? dMemOutMW : execResultMW;
+    	//Write dmem output for load; write angle for servo; write result of execute otherwise
+	    assign regWriteValW = loadDataMW ? dMemOutMW : 32'bz;
+	    assign regWriteValW = ~(servoMW == 2'b00) ? immMW : 32'bz;
+	    assign regWriteValW = irMW ? irDataMW: 32'bz;
+	    assign regWriteValW = ~loadDataMW & ~(servoMW == 2'b00) & ~irMW ? execResultMW : 32'bz;
 
 	    //If error or setx, write to register 30. If jal, write PC + 1 to register 31. If both, do nothing
 		and isJAL(writeSelectW[1], ~jumpCtrlMW[1], jumpCtrlMW[0]);
-		assign writeSelectW[0] = execErrorMW | setxCtrlMW;
-		fiveBitmux4to1 regW(.in0(rdMW), .in1(5'd30), .in2(5'd31), .in3(5'b0), .sel(writeSelectW), .out(writeRegW));
+		assign writeSelectW[0] = execErrorMW | setxCtrlMW;				
+		fiveBitmux4to1 regW(.in0(rdMW), .in1(5'd30), .in2(5'd31), .in3(5'b0), .sel(writeSelectW), .out(coreRegW));
+
+		//Write to 26 for servox, 27 for servoy, and 28 for servoz. Select between core and servo registers
+		fiveBitmux4to1 servoMux(.in0(5'd0), .in1(5'd26), .in2(5'd27), .in3(5'd28), .sel(servoMW), .out(servoRegW));
+		assign writeRegW = servoMW == 2'b00 ? 5'bz : servoRegW;
+		//ALERT: 29 is threshold, 25 is arm motion. not contiguously defined.
+		assign writeRegW= irMW&IRswitch ? 5'd29 : 5'bz;
+		assign writeRegW= irMW&~IRswitch ? 5'd25 : 5'bz;
+		assign writeRegW= ~irMW & (servoMW==2'd0) ? coreRegW: 5'bz;
 
     //Assign outputs for testing
-    assign dmem_address = execResultXM[11:0];
-    assign dmem_data_in = dMemInM;
+    /*assign dmem_address = execResultXM[11:0];
+    assign dmem_data_in = dMemInM;*/
 endmodule //processor
 
 
@@ -452,18 +483,19 @@ module control(
 	regWriteEn, aluInB, 
 	jumpCtrl, branchCtrl, 
 	loadData, storeData,
-	setxCtrl
+	setxCtrl, servo, IRCtrl
 );
 
     input[4:0] opcode, aluOp;
 
-    output regWriteEn, aluInB, loadData, storeData, setxCtrl;
-    output[1:0] branchCtrl, jumpCtrl;
+    output regWriteEn, aluInB, loadData, storeData, setxCtrl, IRCtrl;
+    output[1:0] branchCtrl, jumpCtrl, servo;
 
     wire arithOp;
     
     assign regWriteEn = 
-    	~opcode[4] & (~opcode[1] | opcode[0]) & ~(opcode[2] & opcode[1]) & (opcode[2] | opcode[1] | ~opcode[0]) & ~(jumpCtrl[0] & jumpCtrl[1]) | setxCtrl;
+    	~opcode[4] & (~opcode[1] | opcode[0]) & ~(opcode[2] & opcode[1]) & (opcode[2] | opcode[1] | ~opcode[0]) & ~(jumpCtrl[0] & jumpCtrl[1]) 
+    	| setxCtrl | ~(servo == 2'b0)|(opcode==5'd12);
 
     assign setxCtrl = opcode[4] & ~opcode[3] & opcode[2] & ~opcode[1] & opcode[0];
     
@@ -483,6 +515,14 @@ module control(
     	|(~opcode[4] & ~opcode[3] & opcode[2] & ~opcode[1] & ~opcode[0]);
 
     assign aluInB = loadData | storeData | (~opcode[4] & ~opcode[3] & opcode[2] & ~opcode[1] & opcode[0]);
+   	
+	assign IRCtrl=(opcode==5'd12);
+
+	assign servo = opcode == 5'd9 ? 2'b01 : 2'bz;
+	assign servo = opcode == 5'd10 ? 2'b10 : 2'bz;
+	assign servo = opcode == 5'd11 ? 2'b11 : 2'bz;
+   	assign servo = ~(opcode == 5'd9 | opcode == 5'd10 | opcode == 5'd11) ? 2'b00 : 2'bz;
+
 endmodule //control
 
 
@@ -498,44 +538,47 @@ module pipelineLatch(
 	pc0, opcode0,
 	rd0, rs0, rt0, 
 	shamt0, aluOp0, 
-	imm0, target0,
+	imm0, target0, irData0,
 	regWriteEn0, aluInB0, 
 	jumpCtrl0, branchCtrl0, 
 	loadData0, storeData0,
-	setxCtrl0,
+	setxCtrl0, servo0, ir0,
 	execError0,
 	valA0, valB0,
 	pc1, opcode1,
 	rd1, rs1, rt1, 
 	shamt1, aluOp1, 
-	imm1, target1,
+	imm1, target1, irData1,
 	regWriteEn1, aluInB1, 
 	jumpCtrl1, branchCtrl1, 
 	loadData1, storeData1,
-	setxCtrl1,
+	setxCtrl1, servo1, ir1,
 	execError1,
 	valA1, valB1
 );
 
-	input clock, enable, reset, execError0;
-	input[31:0] pc0, imm0, target0;
+	input clock, enable, reset, execError0, ir0;
+	input[31:0] pc0, imm0, target0, irData0;
 	input[4:0] opcode0, rd0, rs0, rt0, shamt0, aluOp0;
 
 	input regWriteEn0, aluInB0, loadData0, storeData0, setxCtrl0;
-	input[1:0] jumpCtrl0, branchCtrl0;
+	input[1:0] jumpCtrl0, branchCtrl0, servo0;
 
 	input[31:0] valA0, valB0;
 
-	output[31:0] pc1, imm1, target1;
+	output[31:0] pc1, imm1, target1, irData1;
 	output[4:0] opcode1, rd1, rs1, rt1, shamt1, aluOp1;
 
-	output regWriteEn1, aluInB1, loadData1, storeData1, setxCtrl1, execError1;
-	output[1:0] jumpCtrl1, branchCtrl1;
+	output regWriteEn1, aluInB1, loadData1, storeData1, setxCtrl1, execError1, ir1;
+	output[1:0] jumpCtrl1, branchCtrl1, servo1;
 
 	output[31:0] valA1, valB1;
 
 	wire[31:0] decodeCtrl0, opTarget0;
 	wire[31:0] decodeCtrl1, opTarget1;
+	reg[1:0] servoReg;
+	reg IRreg;
+	reg [31:0] irDatareg;
 
 	//Buses - in
    	assign decodeCtrl0[31:27] = rd0;
@@ -553,6 +596,12 @@ module pipelineLatch(
 
    	assign opTarget0[31:27] = opcode0;
    	assign opTarget0[26:0] = target0[26:0];
+
+   	always @(posedge clock) begin
+   		servoReg = servo0;
+   		IRreg = ir0;
+   		irDatareg=irData0;
+   	end
 
    	//Registers (buses)
    	register decodeCtrlReg(.data(decodeCtrl0), .clock(clock), .enable(enable), .reset(reset), .out(decodeCtrl1));
@@ -579,6 +628,10 @@ module pipelineLatch(
     assign loadData1 = decodeCtrl1[2];
     assign storeData1 = decodeCtrl1[1];
     assign setxCtrl1 = decodeCtrl1[0];
+
+    assign servo1 = servoReg;
+    assign ir1 = IRreg;
+    assign irData1=irDatareg;
 
     assign opcode1 = opTarget1[31:27];
     assign target1[26:0] = opTarget1[26:0];
@@ -798,3 +851,29 @@ module branchLogic(
 
 	assign pcOverride = (branchTaken[1] | branchTaken[0]) | (jumpCtrl[1] | jumpCtrl[0]);
 endmodule //branchLogic
+
+
+/**
+ * Logic for reading servo values
+ */ 
+module servoLogic(clock, reset, servoCtrl, angle, servoX, servoY, servoZ, servoReady);
+
+	input[1:0] servoCtrl;
+    input[31:0] angle;
+    input clock, reset;
+
+    output servoX, servoY, servoZ, servoReady;
+
+    reg[7:0] xPos, yPos, zPos;
+
+    always @(posedge clock) begin
+    	casex(servoCtrl)
+    		2'b01: xPos = angle[7:0];
+    		2'b10: yPos = angle[7:0];
+    		2'b11: zPos = angle[7:0];
+    	endcase
+    end
+
+    armController servos(clock, reset, xPos, yPos, zPos, servoX, servoY, servoZ, servoReady, servoCtrl);
+
+endmodule //servoLogic

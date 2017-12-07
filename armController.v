@@ -1,30 +1,32 @@
-module armController(clk, reset, x, /*y, z,*/ servoX/*, servoY, servoZ*/);
+module armController(clk, reset, x, y, z, servoX, servoY, servoZ, ready, servoCtrl);
 
 	input clk, reset;
-	input[7:0] x/*, y, z*/;
-	output servoX/*, servoY, servoZ*/;
+	input [1:0] servoCtrl;
+	input[7:0] x, y, z;
+	output servoX, servoY, servoZ, ready;
 
 	reg servoClk;
-	wire[18:0] widthX/*, widthY, widthZ*/;
-	wire[18:0] count;
+	wire[18:0] widthX, widthY, widthZ;
+	wire[19:0] count;
 
 	//Slow 50 MHz clock down to 50 Hz
-	milCounter counter(~clk, ~reset, count);
+	milCounter counter(~clk, reset, count);
 	always @(posedge clk) begin
 		//Flip clock every 25 Hz (500k ticks)
-		if(count == 19'd500000) begin
+		if(count == 20'd999999 | count == 20'd499999) begin
 			servoClk <= ~servoClk;
 		end
 	end
 
-	//First convert angle to pulse width in microseconds, then convert to ticks
-	assign widthX = 19'd20000 - ((19'd2000)*x/(19'd180) + 19'd500)*19'd50;
-	//assign widthY = 19'd20000 - ((19'd2000)*y/(19'd180) + 19'd500)*19'd50;
-	//assign widthZ = 19'd20000 - ((19'd2000)*z/(19'd180) + 19'd500)*19'd50;
+	assign ready = (count == 20'd999999) | reset;
+	
+	assign widthX = (((19'd2000)*x/(19'd180) + 19'd500)*19'd50); //3-185 degrees
+	assign widthY = (((19'd2000)*y/(19'd180) + 19'd500)*19'd50); //8-156 degrees
+	assign widthZ = (((19'd2000)*z/(19'd180) + 19'd500)*19'd50); //4-128 degrees
 
-	assign servoX = servoClk & (count < widthX);
-	//assign servoY = servoClk & (count < widthY);
-	//assign servoZ = servoClk & (count < widthZ);
+	assign servoX = ~(servoClk & (count < widthX) & (servoCtrl == 2'b01));
+	assign servoY = ~(servoClk & (count < widthY) & (servoCtrl == 2'b10));
+	assign servoZ = ~(servoClk & (count < widthZ) & (servoCtrl == 2'b11));
 
 endmodule // armController
 
@@ -35,12 +37,12 @@ endmodule // armController
 module milCounter(clk, reset, out);
 
 	input clk, reset;
-	output[18:0] out;
+	output[19:0] out;
 
-	reg[18:0] out;
+	reg[19:0] out;
 
 	always @(posedge clk) begin
-		out = (reset | out == 19'd500000) ? 19'b0 : out + 19'd1;
+		out = (reset | out == 20'd999999) ? 20'b0 : out + 20'd1;
 	end
 
 endmodule // milCounter

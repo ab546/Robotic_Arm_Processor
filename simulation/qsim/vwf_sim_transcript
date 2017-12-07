@@ -7,7 +7,7 @@ Note: if both ModelSim-Altera and ModelSim executables are available, ModelSim-A
 
 **** Generating the ModelSim Testbench ****
 
-quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off final-project -c final-project --vector_source="C:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/waveform/processorTest.vwf" --testbench_file="C:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/qsim/processorTest.vwf.vt"
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off final-project -c final-project --vector_source="C:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/waveform/fullArmTest.vwf" --testbench_file="C:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/qsim/fullArmTest.vwf.vt"
 
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
@@ -25,11 +25,9 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Mon Dec 04 21:29:08 2017
-Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off final-project -c final-project --vector_source="C:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/waveform/processorTest.vwf" --testbench_file="C:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/qsim/processorTest.vwf.vt"
+    Info: Processing started: Wed Dec 06 22:07:27 2017
+Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off final-project -c final-project --vector_source="C:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/waveform/fullArmTest.vwf" --testbench_file="C:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/qsim/fullArmTest.vwf.vt"
 Info (119006): Selected device EP4CE115F29C7 for design "final-project"
-
-oring output pin "dMemInM[31]" in vector source file when writing test bench files
 
 Completed successfully. 
 
@@ -55,14 +53,14 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Mon Dec 04 21:29:10 2017
+    Info: Processing started: Wed Dec 06 22:07:29 2017
 Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="C:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/qsim/" final-project -c final-project
 Info (119006): Selected device EP4CE115F29C7 for design "final-project"
 Info (204019): Generated file final-project.vo in folder "C:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 547 megabytes
-    Info: Processing ended: Mon Dec 04 21:29:11 2017
-    Info: Elapsed time: 00:00:01
+    Info: Peak virtual memory: 551 megabytes
+    Info: Processing ended: Wed Dec 06 22:07:31 2017
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 
 Completed successfully. 
@@ -79,68 +77,73 @@ c:/intelfpga_lite/17.1/modelsim_ase/win32aloem//vsim -c -do final-project.do
 
 Reading C:/intelFPGA_lite/17.1/modelsim_ase/tcl/vsim/pref.tcl
 
-
 # 10.5b
 
 # do final-project.do
-# ** Warning: (vlib-34) Library already exists at "work".
 
+# ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:29:12 on Dec 04,2017
+# Start time: 22:07:32 on Dec 06,2017
 # vlog -work work final-project.vo 
 # -- Compiling module processor
 
 # 
 # Top level modules:
 # 	processor
-# End time: 21:29:13 on Dec 04,2017, Elapsed time: 0:00:01
+# End time: 22:07:33 on Dec 06,2017, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
+
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:29:13 on Dec 04,2017
-# vlog -work work processorTest.vwf.vt 
+# Start time: 22:07:33 on Dec 06,2017
+# vlog -work work fullArmTest.vwf.vt 
 
 # -- Compiling module processor_vlg_vec_tst
 # 
 # Top level modules:
 # 	processor_vlg_vec_tst
-# End time: 21:29:13 on Dec 04,2017, Elapsed time: 0:00:00
+# End time: 22:07:33 on Dec 06,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
 # vsim -novopt -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.processor_vlg_vec_tst 
-# Start time: 21:29:13 on Dec 04,2017
+# Start time: 22:07:33 on Dec 06,2017
 # Loading work.processor_vlg_vec_tst
 # Loading work.processor
 # Loading cycloneive_ver.cycloneive_io_obuf
+# Loading cycloneive_ver.cycloneive_io_ibuf
 # Loading cycloneive_ver.cycloneive_lcell_comb
 # Loading altera_ver.dffeas
-# Loading cycloneive_ver.cycloneive_io_ibuf
 # Loading cycloneive_ver.cycloneive_ram_block
 # Loading cycloneive_ver.cycloneive_ram_register
 # Loading cycloneive_ver.cycloneive_ram_pulse_generator
+# Loading cycloneive_ver.cycloneive_mac_mult
+# Loading cycloneive_ver.cycloneive_mac_data_reg
+# Loading cycloneive_ver.cycloneive_mac_sign_reg
+# Loading cycloneive_ver.cycloneive_mac_mult_internal
+# Loading cycloneive_ver.cycloneive_mac_out
 # Loading altera_ver.PRIM_GDFF_LOW
-# ** Warning: Design size of 18706 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# ** Warning: Design size of 16936 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
 # Expect performance to be adversely affected.
 # after#25
 
+# ** Note: $finish    : fullArmTest.vwf.vt(56)
+#    Time: 1 us  Iteration: 0  Instance: /processor_vlg_vec_tst
+
+# End time: 22:07:36 on Dec 06,2017, Elapsed time: 0:00:03
 # Simulation time: 0 ps
 
-# ** Note: $finish    : processorTest.vwf.vt(264)
-#    Time: 2 us  Iteration: 0  Instance: /processor_vlg_vec_tst
-
-# End time: 21:29:20 on Dec 04,2017, Elapsed time: 0:00:07
 # Errors: 0, Warnings: 1
 
 Completed successfully. 
 
 **** Converting ModelSim VCD to vector waveform ****
 
-Reading C:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/waveform/processorTest.vwf...
+Reading C:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/waveform/fullArmTest.vwf...
 
 Reading C:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/qsim/final-project.msim.vcd...
 
 Processing channel transitions... 
 
-Writing the resulting VWF to C:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/qsim/final-project_20171204212920.sim.vwf
+Writing the resulting VWF to C:/Users/light/Desktop/ECE 350/final-project-vishnu-alex/simulation/qsim/final-project_20171206220736.sim.vwf
 
 Finished VCD to VWF conversion.
 

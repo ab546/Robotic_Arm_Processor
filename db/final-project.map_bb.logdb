@@ -1,1 +1,7 @@
 v1
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,servoLogic:servoController|armController:servos|lpm_mult:Mult1|mult_eft:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,servoLogic:servoController|armController:servos|lpm_mult:Mult3|mult_eft:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,servoLogic:servoController|armController:servos|lpm_mult:Mult5|mult_eft:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,servoLogic:servoController|armController:servos|lpm_mult:Mult1|mult_eft:auto_generated|mac_out4,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,servoLogic:servoController|armController:servos|lpm_mult:Mult3|mult_eft:auto_generated|mac_out4,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,servoLogic:servoController|armController:servos|lpm_mult:Mult5|mult_eft:auto_generated|mac_out4,
