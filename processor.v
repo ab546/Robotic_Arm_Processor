@@ -43,7 +43,9 @@
  */
 
 
-module processor(clock, res, servoX, servoY, servoZ, IRdata, IRswitch, led /*,
+module processor(clock, res, servoX, servoY, servoZ, IRdata, IRswitch, led, led2/*
+iroutput, irisready,testdata, icount, scount, dcount, instr,PCout*/
+ /*,
 
     dmem_data_in, dmem_address,
 	
@@ -93,15 +95,17 @@ module processor(clock, res, servoX, servoY, servoZ, IRdata, IRswitch, led /*,
 
 
     input clock, res, IRdata, IRswitch;
-    output servoX, servoY, servoZ,led;
-    /*output [31:0] iroutput;
+    output servoX, servoY, servoZ,led,led2;
+    /*output [31:0] iroutput,instr,PCout;
+	 assign PCout=pcF;
+	 assign instr=fetchInsn;
     assign iroutput=IRout;
-    output irisready, gclk;
-    assign gclk=gatedClk;
+    output irisready;
     assign irisready=IRready;
     output [31:0] testdata;
-    assign testdata=pcF;
-    assign led=(pcF>12'd10);*/
+	 output [17:0] icount, scount, dcount;*/
+    assign led=(pcF>=32'd20);
+	 assign led2=(IRswitch);
    	wire[31:0] dmem_data_in;
     wire[11:0] dmem_address;
 
@@ -316,7 +320,7 @@ module processor(clock, res, servoX, servoY, servoZ, IRdata, IRswitch, led /*,
     );
 
     servoLogic servoController(clock, (reset | (servoDX == 2'b0)), servoDX, immDX, servoX, servoY, servoZ, servoReadyX);
-    IR_Receiver IR(clock&irDX, reset, IRdata, IRready, IRout,testData);
+    IR_Receiver IR(clock&irDX, res, IRdata, IRready, IRout,testdata,icount, scount, dcount);
     pipelineLatch latchXM(
     	gatedClk, 1'b1, 1'b0,
 		pcDX, opcodeDX,
@@ -383,7 +387,7 @@ module processor(clock, res, servoX, servoY, servoZ, IRdata, IRswitch, led /*,
     	//Write dmem output for load; write angle for servo; write result of execute otherwise
 	    assign regWriteValW = loadDataMW ? dMemOutMW : 32'bz;
 	    assign regWriteValW = ~(servoMW == 2'b00) ? immMW : 32'bz;
-	    assign regWriteValW = irMW ? irDataMW: 32'bz;
+	    assign regWriteValW = irMW ? irDataXM: 32'bz;
 	    assign regWriteValW = ~loadDataMW & ~(servoMW == 2'b00) & ~irMW ? execResultMW : 32'bz;
 
 	    //If error or setx, write to register 30. If jal, write PC + 1 to register 31. If both, do nothing
@@ -395,8 +399,8 @@ module processor(clock, res, servoX, servoY, servoZ, IRdata, IRswitch, led /*,
 		fiveBitmux4to1 servoMux(.in0(5'd0), .in1(5'd26), .in2(5'd27), .in3(5'd28), .sel(servoMW), .out(servoRegW));
 		assign writeRegW = servoMW == 2'b00 ? 5'bz : servoRegW;
 		//ALERT: 29 is threshold, 25 is arm motion. not contiguously defined.
-		assign writeRegW= irMW&IRswitch ? 5'd29 : 5'bz;
-		assign writeRegW= irMW&~IRswitch ? 5'd25 : 5'bz;
+		assign writeRegW= irMW&IRswitch ? 5'd25 : 5'bz;
+		assign writeRegW= irMW&~IRswitch ? 5'd29 : 5'bz;
 		assign writeRegW= ~irMW & (servoMW==2'd0) ? coreRegW: 5'bz;
 
     //Assign outputs for testing
