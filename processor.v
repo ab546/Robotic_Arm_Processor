@@ -43,7 +43,7 @@
  */
 
 
-module processor(clock, res, servoX, servoY, servoZ, IRdata, IRswitch, led, led2/*
+module processor(clock, res, servoX, servoY, servoZ, IRdata, IRswitch, led, led2,iruse/*
 iroutput, irisready,testdata, icount, scount, dcount, instr,PCout*/
  /*,
 
@@ -96,6 +96,8 @@ iroutput, irisready,testdata, icount, scount, dcount, instr,PCout*/
 
     input clock, res, IRdata, IRswitch;
     output servoX, servoY, servoZ,led,led2;
+    output [7:0] iruse;	
+    assign iruse=iruse1[7:0];
     /*output [31:0] iroutput,instr,PCout;
 	 assign PCout=pcF;
 	 assign instr=fetchInsn;
@@ -193,6 +195,8 @@ iroutput, irisready,testdata, icount, scount, dcount, instr,PCout*/
     	gatedClk, reset, 
     	pcF, fetchInsn
     );
+    register irlatch(iruseful, clock, IRready, 1'b0, iruse1);
+    wire [31:0] iruse1;
 
     decode decodeInsn(fetchInsn, opcodeF, rdF, rsF, rtF, immF, shamtF, aluOpF, targetF[26:0]);
     assign targetF[31:27] = 5'b0; 
@@ -320,13 +324,17 @@ iroutput, irisready,testdata, icount, scount, dcount, instr,PCout*/
     );
 
     servoLogic servoController(clock, (reset | (servoDX == 2'b0)), servoDX, immDX, servoX, servoY, servoZ, servoReadyX);
-    IR_Receiver IR(clock&irDX, res, IRdata, IRready, IRout,testdata,icount, scount, dcount);
+    IR_Receiver IR(clock&irDX, res, IRdata, IRready, IRout);
+    wire [31:0] iruseful;
+    assign iruseful[7:0]=IRout[23:16];
+    assign iruseful[31:8]=24'b0;
+
     pipelineLatch latchXM(
     	gatedClk, 1'b1, 1'b0,
 		pcDX, opcodeDX,
 		rdDX, rsDX, rtDX, 
 		shamtDX, aluOpDX, 
-		immDX, targetDX, IRout,
+		immDX, targetDX, iruseful,
 		regWriteEnDX, aluInBDX, 
 		jumpCtrlDX, branchCtrlDX, 
 		loadDataDX, storeDataDX,
@@ -387,8 +395,10 @@ iroutput, irisready,testdata, icount, scount, dcount, instr,PCout*/
     	//Write dmem output for load; write angle for servo; write result of execute otherwise
 	    assign regWriteValW = loadDataMW ? dMemOutMW : 32'bz;
 	    assign regWriteValW = ~(servoMW == 2'b00) ? immMW : 32'bz;
-	    assign regWriteValW = irMW ? irDataXM: 32'bz;
+	    assign regWriteValW = irMW ? irDataMW: 32'bz;
 	    assign regWriteValW = ~loadDataMW & ~(servoMW == 2'b00) & ~irMW ? execResultMW : 32'bz;
+	    wire [31:0] regvalreal;
+	    assign regvalreal= IRready&irDX ? iruseful : regWriteValW;
 
 	    //If error or setx, write to register 30. If jal, write PC + 1 to register 31. If both, do nothing
 		and isJAL(writeSelectW[1], ~jumpCtrlMW[1], jumpCtrlMW[0]);
@@ -400,8 +410,11 @@ iroutput, irisready,testdata, icount, scount, dcount, instr,PCout*/
 		assign writeRegW = servoMW == 2'b00 ? 5'bz : servoRegW;
 		//ALERT: 29 is threshold, 25 is arm motion. not contiguously defined.
 		assign writeRegW= irMW&IRswitch ? 5'd25 : 5'bz;
-		assign writeRegW= irMW&~IRswitch ? 5'd29 : 5'bz;
+		assign writeRegW= irMW&~IRswitch ? 5'd25 : 5'bz;
 		assign writeRegW= ~irMW & (servoMW==2'd0) ? coreRegW: 5'bz;
+		wire  wregreal;
+		assign regwreal = IRready&irDX? 5'd29 : writeRegW;
+
 
     //Assign outputs for testing
     /*assign dmem_address = execResultXM[11:0];
@@ -680,12 +693,12 @@ module regFileLogic(
 
 	regfile registerfile(
 		.clock(clock),
-   		.ctrl_writeEnable(regWriteEn),
+   		.ctrl_writeEnable(regWriteEn|IRready),
     	.ctrl_reset(reset), 
-    	.ctrl_writeReg(writeReg),
+    	.ctrl_writeReg(regwreal),
     	.ctrl_readRegA(readRegA), 
     	.ctrl_readRegB(readRegB), 
-    	.data_writeReg(regWriteVal),
+    	.data_writeReg(regvalreal),
     	.data_readRegA(regAVal), 
     	.data_readRegB(regBVal)
 	);
