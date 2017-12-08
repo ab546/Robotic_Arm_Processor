@@ -51,10 +51,6 @@ module IR_Receiver(
 					iIRDA,
 					oDATA_READY,  //data ready
 					oDATA,         //decode data output
-					testData,
-					icount,
-					scount,
-					dcount
 					);
 
 
@@ -79,8 +75,7 @@ input         iCLK;        //input clk,50MHz
 input         iRST_n;      //rst
 input         iIRDA;       //Irda RX output decoded data
 output        oDATA_READY; //data ready
-output [31:0] oDATA,testData;       //output data,32bit 
-output [17:0] icount, dcount, scount;
+output [31:0] oDATA;       //output data,32bit 
 
 //=======================================================
 //  Signal Declarations
