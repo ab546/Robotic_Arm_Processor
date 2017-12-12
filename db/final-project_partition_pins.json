@@ -16,15 +16,55 @@
 					"strict" : false
 				},
 				{
+					"name" : "led",
+					"strict" : false
+				},
+				{
+					"name" : "led2",
+					"strict" : false
+				},
+				{
+					"name" : "iruse[0]",
+					"strict" : false
+				},
+				{
+					"name" : "iruse[1]",
+					"strict" : false
+				},
+				{
+					"name" : "iruse[2]",
+					"strict" : false
+				},
+				{
+					"name" : "iruse[3]",
+					"strict" : false
+				},
+				{
+					"name" : "iruse[4]",
+					"strict" : false
+				},
+				{
+					"name" : "iruse[5]",
+					"strict" : false
+				},
+				{
+					"name" : "iruse[6]",
+					"strict" : false
+				},
+				{
+					"name" : "iruse[7]",
+					"strict" : false
+				},
+				{
+					"name" : "IRswitch",
+					"strict" : false
+				},
+				{
 					"name" : "clock",
 					"strict" : false
 				},
 				{
 					"name" : "res",
-					"strict" : false
-				},
-				{
-					"name" : "IRswitch",
 					"strict" : false
 				},
 				{

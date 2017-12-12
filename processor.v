@@ -412,7 +412,7 @@ iroutput, irisready,testdata, icount, scount, dcount, instr,PCout*/
 		assign writeRegW= irMW&IRswitch ? 5'd25 : 5'bz;
 		assign writeRegW= irMW&~IRswitch ? 5'd25 : 5'bz;
 		assign writeRegW= ~irMW & (servoMW==2'd0) ? coreRegW: 5'bz;
-		wire  wregreal;
+		wire  regwreal;
 		assign regwreal = IRready&irDX? 5'd29 : writeRegW;
 
 

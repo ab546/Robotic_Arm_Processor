@@ -1,13 +1,23 @@
 |processor
-clock => clock.IN2
-res => reset.IN3
-servoX <= servoLogic:servoController.port4
-servoY <= servoLogic:servoController.port5
-servoZ <= servoLogic:servoController.port6
+clock => clock.IN3
+res => res.IN1
+servoX << servoLogic:servoController.port4
+servoY << servoLogic:servoController.port5
+servoZ << servoLogic:servoController.port6
 IRdata => IRdata.IN1
 IRswitch => writeRegW.IN1
+IRswitch => led2.DATAIN
 IRswitch => writeRegW.IN1
-led <= <GND>
+led << LessThan0.DB_MAX_OUTPUT_PORT_TYPE
+led2 << IRswitch.DB_MAX_OUTPUT_PORT_TYPE
+iruse[0] << register:irlatch.port4
+iruse[1] << register:irlatch.port4
+iruse[2] << register:irlatch.port4
+iruse[3] << register:irlatch.port4
+iruse[4] << register:irlatch.port4
+iruse[5] << register:irlatch.port4
+iruse[6] << register:irlatch.port4
+iruse[7] << register:irlatch.port4
 
 
 |processor|fetch:fetchStage
@@ -2532,6 +2542,363 @@ q_a[28] <= ram_block1a28.PORTADATAOUT
 q_a[29] <= ram_block1a29.PORTADATAOUT
 q_a[30] <= ram_block1a30.PORTADATAOUT
 q_a[31] <= ram_block1a31.PORTADATAOUT
+
+
+|processor|register:irlatch
+data[0] => data[0].IN1
+data[1] => data[1].IN1
+data[2] => data[2].IN1
+data[3] => data[3].IN1
+data[4] => data[4].IN1
+data[5] => data[5].IN1
+data[6] => data[6].IN1
+data[7] => data[7].IN1
+data[8] => data[8].IN1
+data[9] => data[9].IN1
+data[10] => data[10].IN1
+data[11] => data[11].IN1
+data[12] => data[12].IN1
+data[13] => data[13].IN1
+data[14] => data[14].IN1
+data[15] => data[15].IN1
+data[16] => data[16].IN1
+data[17] => data[17].IN1
+data[18] => data[18].IN1
+data[19] => data[19].IN1
+data[20] => data[20].IN1
+data[21] => data[21].IN1
+data[22] => data[22].IN1
+data[23] => data[23].IN1
+data[24] => data[24].IN1
+data[25] => data[25].IN1
+data[26] => data[26].IN1
+data[27] => data[27].IN1
+data[28] => data[28].IN1
+data[29] => data[29].IN1
+data[30] => data[30].IN1
+data[31] => data[31].IN1
+clock => clock.IN32
+enable => enable.IN32
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+reset => _.IN1
+out[0] <= ecedffe:ffLoop[0].my_dff.q
+out[1] <= ecedffe:ffLoop[1].my_dff.q
+out[2] <= ecedffe:ffLoop[2].my_dff.q
+out[3] <= ecedffe:ffLoop[3].my_dff.q
+out[4] <= ecedffe:ffLoop[4].my_dff.q
+out[5] <= ecedffe:ffLoop[5].my_dff.q
+out[6] <= ecedffe:ffLoop[6].my_dff.q
+out[7] <= ecedffe:ffLoop[7].my_dff.q
+out[8] <= ecedffe:ffLoop[8].my_dff.q
+out[9] <= ecedffe:ffLoop[9].my_dff.q
+out[10] <= ecedffe:ffLoop[10].my_dff.q
+out[11] <= ecedffe:ffLoop[11].my_dff.q
+out[12] <= ecedffe:ffLoop[12].my_dff.q
+out[13] <= ecedffe:ffLoop[13].my_dff.q
+out[14] <= ecedffe:ffLoop[14].my_dff.q
+out[15] <= ecedffe:ffLoop[15].my_dff.q
+out[16] <= ecedffe:ffLoop[16].my_dff.q
+out[17] <= ecedffe:ffLoop[17].my_dff.q
+out[18] <= ecedffe:ffLoop[18].my_dff.q
+out[19] <= ecedffe:ffLoop[19].my_dff.q
+out[20] <= ecedffe:ffLoop[20].my_dff.q
+out[21] <= ecedffe:ffLoop[21].my_dff.q
+out[22] <= ecedffe:ffLoop[22].my_dff.q
+out[23] <= ecedffe:ffLoop[23].my_dff.q
+out[24] <= ecedffe:ffLoop[24].my_dff.q
+out[25] <= ecedffe:ffLoop[25].my_dff.q
+out[26] <= ecedffe:ffLoop[26].my_dff.q
+out[27] <= ecedffe:ffLoop[27].my_dff.q
+out[28] <= ecedffe:ffLoop[28].my_dff.q
+out[29] <= ecedffe:ffLoop[29].my_dff.q
+out[30] <= ecedffe:ffLoop[30].my_dff.q
+out[31] <= ecedffe:ffLoop[31].my_dff.q
+
+
+|processor|register:irlatch|ecedffe:ffLoop[0].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[1].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[2].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[3].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[4].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[5].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[6].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[7].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[8].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[9].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[10].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[11].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[12].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[13].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[14].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[15].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[16].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[17].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[18].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[19].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[20].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[21].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[22].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[23].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[24].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[25].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[26].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[27].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[28].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[29].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[30].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|processor|register:irlatch|ecedffe:ffLoop[31].my_dff
+d => q~reg0.DATAIN
+clk => q~reg0.CLK
+clrn => q~reg0.ACLR
+ena => q~reg0.ENA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |processor|decode:decodeInsn
@@ -5522,43 +5889,43 @@ rt[1] => rt[1].IN1
 rt[2] => rt[2].IN1
 rt[3] => rt[3].IN1
 rt[4] => rt[4].IN1
-writeReg[0] => writeReg[0].IN1
-writeReg[1] => writeReg[1].IN1
-writeReg[2] => writeReg[2].IN1
-writeReg[3] => writeReg[3].IN1
-writeReg[4] => writeReg[4].IN1
-regWriteVal[0] => regWriteVal[0].IN1
-regWriteVal[1] => regWriteVal[1].IN1
-regWriteVal[2] => regWriteVal[2].IN1
-regWriteVal[3] => regWriteVal[3].IN1
-regWriteVal[4] => regWriteVal[4].IN1
-regWriteVal[5] => regWriteVal[5].IN1
-regWriteVal[6] => regWriteVal[6].IN1
-regWriteVal[7] => regWriteVal[7].IN1
-regWriteVal[8] => regWriteVal[8].IN1
-regWriteVal[9] => regWriteVal[9].IN1
-regWriteVal[10] => regWriteVal[10].IN1
-regWriteVal[11] => regWriteVal[11].IN1
-regWriteVal[12] => regWriteVal[12].IN1
-regWriteVal[13] => regWriteVal[13].IN1
-regWriteVal[14] => regWriteVal[14].IN1
-regWriteVal[15] => regWriteVal[15].IN1
-regWriteVal[16] => regWriteVal[16].IN1
-regWriteVal[17] => regWriteVal[17].IN1
-regWriteVal[18] => regWriteVal[18].IN1
-regWriteVal[19] => regWriteVal[19].IN1
-regWriteVal[20] => regWriteVal[20].IN1
-regWriteVal[21] => regWriteVal[21].IN1
-regWriteVal[22] => regWriteVal[22].IN1
-regWriteVal[23] => regWriteVal[23].IN1
-regWriteVal[24] => regWriteVal[24].IN1
-regWriteVal[25] => regWriteVal[25].IN1
-regWriteVal[26] => regWriteVal[26].IN1
-regWriteVal[27] => regWriteVal[27].IN1
-regWriteVal[28] => regWriteVal[28].IN1
-regWriteVal[29] => regWriteVal[29].IN1
-regWriteVal[30] => regWriteVal[30].IN1
-regWriteVal[31] => regWriteVal[31].IN1
+writeReg[0] => ~NO_FANOUT~
+writeReg[1] => ~NO_FANOUT~
+writeReg[2] => ~NO_FANOUT~
+writeReg[3] => ~NO_FANOUT~
+writeReg[4] => ~NO_FANOUT~
+regWriteVal[0] => ~NO_FANOUT~
+regWriteVal[1] => ~NO_FANOUT~
+regWriteVal[2] => ~NO_FANOUT~
+regWriteVal[3] => ~NO_FANOUT~
+regWriteVal[4] => ~NO_FANOUT~
+regWriteVal[5] => ~NO_FANOUT~
+regWriteVal[6] => ~NO_FANOUT~
+regWriteVal[7] => ~NO_FANOUT~
+regWriteVal[8] => ~NO_FANOUT~
+regWriteVal[9] => ~NO_FANOUT~
+regWriteVal[10] => ~NO_FANOUT~
+regWriteVal[11] => ~NO_FANOUT~
+regWriteVal[12] => ~NO_FANOUT~
+regWriteVal[13] => ~NO_FANOUT~
+regWriteVal[14] => ~NO_FANOUT~
+regWriteVal[15] => ~NO_FANOUT~
+regWriteVal[16] => ~NO_FANOUT~
+regWriteVal[17] => ~NO_FANOUT~
+regWriteVal[18] => ~NO_FANOUT~
+regWriteVal[19] => ~NO_FANOUT~
+regWriteVal[20] => ~NO_FANOUT~
+regWriteVal[21] => ~NO_FANOUT~
+regWriteVal[22] => ~NO_FANOUT~
+regWriteVal[23] => ~NO_FANOUT~
+regWriteVal[24] => ~NO_FANOUT~
+regWriteVal[25] => ~NO_FANOUT~
+regWriteVal[26] => ~NO_FANOUT~
+regWriteVal[27] => ~NO_FANOUT~
+regWriteVal[28] => ~NO_FANOUT~
+regWriteVal[29] => ~NO_FANOUT~
+regWriteVal[30] => ~NO_FANOUT~
+regWriteVal[31] => ~NO_FANOUT~
 pc[0] => ~NO_FANOUT~
 pc[1] => ~NO_FANOUT~
 pc[2] => ~NO_FANOUT~
@@ -36748,38 +37115,6 @@ iRST_n => oDATA[28]~reg0.ACLR
 iRST_n => oDATA[29]~reg0.ACLR
 iRST_n => oDATA[30]~reg0.ACLR
 iRST_n => oDATA[31]~reg0.ACLR
-iRST_n => data[0].ACLR
-iRST_n => data[1].ACLR
-iRST_n => data[2].ACLR
-iRST_n => data[3].ACLR
-iRST_n => data[4].ACLR
-iRST_n => data[5].ACLR
-iRST_n => data[6].ACLR
-iRST_n => data[7].ACLR
-iRST_n => data[8].ACLR
-iRST_n => data[9].ACLR
-iRST_n => data[10].ACLR
-iRST_n => data[11].ACLR
-iRST_n => data[12].ACLR
-iRST_n => data[13].ACLR
-iRST_n => data[14].ACLR
-iRST_n => data[15].ACLR
-iRST_n => data[16].ACLR
-iRST_n => data[17].ACLR
-iRST_n => data[18].ACLR
-iRST_n => data[19].ACLR
-iRST_n => data[20].ACLR
-iRST_n => data[21].ACLR
-iRST_n => data[22].ACLR
-iRST_n => data[23].ACLR
-iRST_n => data[24].ACLR
-iRST_n => data[25].ACLR
-iRST_n => data[26].ACLR
-iRST_n => data[27].ACLR
-iRST_n => data[28].ACLR
-iRST_n => data[29].ACLR
-iRST_n => data[30].ACLR
-iRST_n => data[31].ACLR
 iRST_n => idle_count[0].ACLR
 iRST_n => idle_count[1].ACLR
 iRST_n => idle_count[2].ACLR
@@ -36843,6 +37178,38 @@ iRST_n => bitcount[2].ACLR
 iRST_n => bitcount[3].ACLR
 iRST_n => bitcount[4].ACLR
 iRST_n => bitcount[5].ACLR
+iRST_n => data[0].ACLR
+iRST_n => data[1].ACLR
+iRST_n => data[2].ACLR
+iRST_n => data[3].ACLR
+iRST_n => data[4].ACLR
+iRST_n => data[5].ACLR
+iRST_n => data[6].ACLR
+iRST_n => data[7].ACLR
+iRST_n => data[8].ACLR
+iRST_n => data[9].ACLR
+iRST_n => data[10].ACLR
+iRST_n => data[11].ACLR
+iRST_n => data[12].ACLR
+iRST_n => data[13].ACLR
+iRST_n => data[14].ACLR
+iRST_n => data[15].ACLR
+iRST_n => data[16].ACLR
+iRST_n => data[17].ACLR
+iRST_n => data[18].ACLR
+iRST_n => data[19].ACLR
+iRST_n => data[20].ACLR
+iRST_n => data[21].ACLR
+iRST_n => data[22].ACLR
+iRST_n => data[23].ACLR
+iRST_n => data[24].ACLR
+iRST_n => data[25].ACLR
+iRST_n => data[26].ACLR
+iRST_n => data[27].ACLR
+iRST_n => data[28].ACLR
+iRST_n => data[29].ACLR
+iRST_n => data[30].ACLR
+iRST_n => data[31].ACLR
 iRST_n => state~3.DATAIN
 iRST_n => data_buf[31].ENA
 iRST_n => data_buf[30].ENA
@@ -36912,38 +37279,6 @@ oDATA[28] <= oDATA[28]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 oDATA[29] <= oDATA[29]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 oDATA[30] <= oDATA[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 oDATA[31] <= oDATA[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-testData[0] <= data[0].DB_MAX_OUTPUT_PORT_TYPE
-testData[1] <= data[1].DB_MAX_OUTPUT_PORT_TYPE
-testData[2] <= data[2].DB_MAX_OUTPUT_PORT_TYPE
-testData[3] <= data[3].DB_MAX_OUTPUT_PORT_TYPE
-testData[4] <= data[4].DB_MAX_OUTPUT_PORT_TYPE
-testData[5] <= data[5].DB_MAX_OUTPUT_PORT_TYPE
-testData[6] <= data[6].DB_MAX_OUTPUT_PORT_TYPE
-testData[7] <= data[7].DB_MAX_OUTPUT_PORT_TYPE
-testData[8] <= data[8].DB_MAX_OUTPUT_PORT_TYPE
-testData[9] <= data[9].DB_MAX_OUTPUT_PORT_TYPE
-testData[10] <= data[10].DB_MAX_OUTPUT_PORT_TYPE
-testData[11] <= data[11].DB_MAX_OUTPUT_PORT_TYPE
-testData[12] <= data[12].DB_MAX_OUTPUT_PORT_TYPE
-testData[13] <= data[13].DB_MAX_OUTPUT_PORT_TYPE
-testData[14] <= data[14].DB_MAX_OUTPUT_PORT_TYPE
-testData[15] <= data[15].DB_MAX_OUTPUT_PORT_TYPE
-testData[16] <= data[16].DB_MAX_OUTPUT_PORT_TYPE
-testData[17] <= data[17].DB_MAX_OUTPUT_PORT_TYPE
-testData[18] <= data[18].DB_MAX_OUTPUT_PORT_TYPE
-testData[19] <= data[19].DB_MAX_OUTPUT_PORT_TYPE
-testData[20] <= data[20].DB_MAX_OUTPUT_PORT_TYPE
-testData[21] <= data[21].DB_MAX_OUTPUT_PORT_TYPE
-testData[22] <= data[22].DB_MAX_OUTPUT_PORT_TYPE
-testData[23] <= data[23].DB_MAX_OUTPUT_PORT_TYPE
-testData[24] <= data[24].DB_MAX_OUTPUT_PORT_TYPE
-testData[25] <= data[25].DB_MAX_OUTPUT_PORT_TYPE
-testData[26] <= data[26].DB_MAX_OUTPUT_PORT_TYPE
-testData[27] <= data[27].DB_MAX_OUTPUT_PORT_TYPE
-testData[28] <= data[28].DB_MAX_OUTPUT_PORT_TYPE
-testData[29] <= data[29].DB_MAX_OUTPUT_PORT_TYPE
-testData[30] <= data[30].DB_MAX_OUTPUT_PORT_TYPE
-testData[31] <= data[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |processor|pipelineLatch:latchXM

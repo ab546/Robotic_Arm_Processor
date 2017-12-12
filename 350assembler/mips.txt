@@ -1,28 +1,40 @@
 nop
-ir $r0, $r0, 0
 nop
-nop
-beq $r25 $r0 22
-nop
+ir $r2 $r3, 4
 nop
 nop
 nop
 nop
+beq $r29, $r0, 50
 nop
 nop
 nop
 nop
+addi $r1 $r1 1
 nop
 nop
 nop
+servox $r0, $r0, 160
+nop
+servox $r0, $r0, 160
+nop
+servox $r0, $r0, 160
+nop
+servox $r0, $r0, 160
+nop
+servox $r0, $r0, 160
 nop
 nop
 nop
+servoz $r0, $r0, 30
 nop
+servoz $r0, $r0, 30
 nop
+servoz $r0, $r0, 30
 nop
-j 13
+servoz $r0, $r0, 30
 nop
+beq $r1 $r1 20
 nop
 nop
 j 0
